@@ -1,0 +1,44 @@
+.navbar{
+    display: flex;
+    justify-content: space-between;
+    padding-inline: 60px;
+    align-items: center;
+    font-size: 20px;
+}
+.navbar img{
+    width: 100px;
+}
+.navbar .nav-menu{
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    gap: 30px;
+}
+.slika-logo{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 40px;
+    gap: 20px;
+    font-weight: 600;
+}
+.nav-menu li{
+    cursor: pointer;
+    padding: 5px 10px;
+    transition: all 0.2s linear;
+}
+.nav-menu li:hover{
+    background: #df678c;
+}
+.nav-menu button{
+    background-color: #df678c;
+    text-transform: uppercase;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    color: white;
+    padding: 10px 25px;
+    font-weight: 500;
+    letter-spacing: 2px;
+}
