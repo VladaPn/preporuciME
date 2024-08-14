@@ -1,37 +1,62 @@
-.navbar{
+.navbar {
     display: flex;
     justify-content: space-between;
-    padding-inline: 60px;
-    align-items: center;
+    padding-left: 60px;
+    align-items: start;
     font-size: 20px;
+    position: relative;
 }
-.navbar img{
+.no-toggle-menu{
+display: flex;
+justify-content: space-between;
+align-items: center;
+gap: 10px;
+width: 100%;
+padding-right: 60px;
+}
+
+.navbar img {
     width: 100px;
 }
-.navbar .nav-menu{
+.navbar .nav-menu {
     list-style: none;
     display: flex;
     align-items: center;
     justify-content: space-around;
     gap: 30px;
 }
-.slika-logo{
+.menu-toggle{
+    background-color: transparent;
+    color: white;
+    height: 50px;
+    width: 50px;
+    font-size: 30px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    display: none;
+}
+.slika-logo {
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 40px;
     gap: 20px;
     font-weight: 600;
+    cursor: pointer;
 }
-.nav-menu li{
+
+.nav-menu li {
     cursor: pointer;
     padding: 5px 10px;
     transition: all 0.2s linear;
 }
-.nav-menu li:hover{
+
+.nav-menu li:hover {
     background: #df678c;
 }
-.nav-menu button{
+
+.login {
     background-color: #df678c;
     text-transform: uppercase;
     border: none;
@@ -42,3 +67,207 @@
     font-weight: 500;
     letter-spacing: 2px;
 }
+
+.theme {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    padding: 10px;
+    border: 0;
+    outline: 0;
+    background-color: white;
+    cursor: pointer;
+}
+.theme img {
+    max-width: 100%;
+}
+.theme-dark {
+    background: white;
+    color: #3d155f;
+    -webkit-box-shadow: 13px 13px 15px -20px rgba(255, 255, 255, 1);
+-moz-box-shadow: 13px 13px 15px -20px rgba(255, 255, 255, 1);
+box-shadow: 13px 13px 15px -20px rgba(255, 255, 255, 1);
+}
+.button-dark {
+    border: 2px solid #3d155f;
+}
+.side-menu{
+    background-color: #df678c;
+    color: white;
+    width: 250px;
+    height: 100vh;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+.side-nav-menu{
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 30px;
+    gap: 15px;
+}
+.side-menu button{
+    background-color: white;
+    text-transform: uppercase;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    color: #df678c;
+    padding: 10px 25px;
+    font-weight: 500;
+    letter-spacing: 2px;
+}
+.menu-toggle-dark{
+    color: #3d155f;
+}
+.menu-closed{
+    display: none;
+}
+@media(max-width:1050px){
+    .slika-logo{
+        font-size: 30px;
+        gap: 10px;
+    }
+    .navbar img{
+        width: 80px;
+    }
+    .navbar{
+        padding-top: 10px;
+    }
+    .navbar .nav-menu{
+        gap: 20px;
+    }
+}
+@media(max-width:935px){
+    .navbar .nav-menu{
+        gap: 15px;
+    }
+    .navbar{
+        font-size: 17px;
+    }
+    .slika-logo{
+        font-size: 26px;
+        gap: 10px;
+    }
+    .theme {
+        height: 40px;
+        width: 40px;
+    }
+    .login {
+        background-color: #df678c;
+        text-transform: uppercase;
+        border: none;
+        outline: none;
+        cursor: pointer;
+        color: white;
+        padding: 8px 15px;
+        font-weight: 500;
+        letter-spacing: 1px;
+    }
+}
+@media(min-width:829px){
+    .menu-toggle,.side-menu{
+        display: none;
+    }
+}
+@media(max-width:829px){
+.navbar .nav-menu{
+    display: none;
+}
+.no-toggle-menu{
+    justify-content: center;
+    gap: 50px;
+}
+.menu-toggle{
+    display: block;
+}
+#no-toggle{
+    padding-right: 250px;
+}
+.login{
+    display: none;
+}
+.slika-logo{
+    font-size: 28px;
+    gap: 10px;
+}
+}
+@media(max-width:775px){
+    .slika-logo{
+        font-size: 26px;
+        gap: 10px;
+    }
+    .navbar .nav-menu{
+        gap: 10px;
+    }
+    #no-toggle{
+        padding-right: 200px;
+    }
+    .navbar img{
+        width: 60px;
+    }
+    .side-menu{
+        width: 200px;
+    }
+}
+@media(max-width:690px){
+    .side-menu{
+        width: 150px;
+    }
+    #no-toggle{
+        padding-right: 150px;
+    }
+    .no-toggle-menu{
+        gap: 30px;
+    }
+}
+@media(max-width:535px){
+    .side-menu{
+        width: 100px;
+    }
+    #no-toggle{
+        padding-right: 120px;
+    }
+    .navbar{
+        padding-left: 40px;
+    }
+    .side-menu button{
+        padding: 5px 10px;
+        font-weight: 500;
+        letter-spacing: 1px;
+    }
+    .theme{
+        width: 30px;
+        height: 30px;
+        padding: 6px;
+    }
+    .menu-toggle{
+        height: 40px;
+        width: 40px;
+        font-size: 25px;
+    }
+    .slika-logo{
+        font-size: 22px;
+    }
+}
+@media(max-width:489px){
+    #no-toggle{
+        padding-right: 100px;
+    }
+    .side-menu{
+        width: 85px;
+    }
+    .navbar{
+        padding-left: 25px;
+    }
+}
+/*.no-toggle-menu{
+display: flex;
+justify-content: space-between;
+align-items: center;
+gap: 10px;
+width: 100%;
+padding-right: 250px;
+}*/

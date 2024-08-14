@@ -7,4 +7,7 @@
 }
 #root{
   min-height: 100vh;
+  background: #3d155f;
+  color: white;
+  width: 100%;
 }

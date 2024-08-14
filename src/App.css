@@ -2,4 +2,9 @@
   background: #3d155f;
   color: white;
   min-height: 100vh;
+  min-width: 100%;
+}
+.theme-dark{
+  background: white;
+  color: #3d155f;
 }
