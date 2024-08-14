@@ -7,7 +7,7 @@
     width: 100%;
 }
 .hero{
-    padding:  100px 60px;
+    padding:  100px 80px;
     display: grid;
     align-items: center;
     grid-template-columns: 1.2fr 1fr;
@@ -23,6 +23,9 @@
     font-weight: 600;
     padding-left: 80px;
     margin-bottom: 30px;
+}
+.right-hero{
+    padding-bottom: 0;
 }
 .box-rounded{
     width: 75px;
@@ -53,4 +56,128 @@
     font-size: 30px;
     display: block;
     margin-top: 20px;
+}
+.novi{display: none;}
+@media(max-width:1550px){
+    .left-hero h2{
+        font-size:40px;
+    }
+}
+@media(max-width:1295px){
+    .left-hero h2{
+        font-size:30px;
+        margin-bottom: 26px;
+    }
+    .hero{
+        padding:  100px 80px;
+        gap: min(100px,20%);
+        font-size: 18px;
+        line-height: 22px;
+    }
+    .left-hero .prijava{
+        font-size: 18px;
+    }
+    .left-hero p span{
+        font-size: 24px;
+    }
+}
+@media(max-width:1037px){
+    .left-hero h2{
+        font-size:26px;
+        margin-bottom: 18px;
+    }
+    .box-rounded{
+        width: 60px;
+        height: 40px;
+        top: -11px;
+    }
+    .left-hero p{
+        margin-top: 50px;
+        margin-bottom: 45px;
+    }
+}
+@media(max-width:829px){
+    .hero{
+        grid-template-columns: 1.2fr;
+    }
+    .left-hero h2{
+        font-size:40px;
+        margin-bottom: 18px;
+    }
+    .left-hero p{
+        margin-top: 70px;
+        margin-bottom: 60px;
+    }
+    .right-hero{
+        padding-bottom: 70px;
+    }
+}
+@media(max-width:699px){
+    .left-hero h2{
+        font-size:30px;
+    }
+    .left-hero p{
+        margin-top: 60px;
+        margin-bottom: 50px;
+    }
+    .left-hero p span{
+        font-size: 22px;
+    }
+}
+@media(max-width:584px){
+    .left-hero h2{
+        font-size:26px;
+    }
+    .left-hero p{
+        margin-top: 50px;
+        margin-bottom: 40px;
+    }
+}
+@media(max-width:538px){
+    .left-hero h2{
+        font-size:20px;
+        padding-left: 65px;
+    }
+    .left-hero p{
+        margin-top: 40px;
+        margin-bottom: 30px;
+    }
+}
+@media(max-width:462px){
+    .left-hero h2{
+        font-size:20px;
+        padding-left: 45px;
+    }
+    .box-rounded{
+        width: 40px;
+    }
+    .left-hero .prijava{
+        padding: 8px 20px;
+        font-size: 18px;
+        margin-right: 12px;
+    }
+    .hero{
+        font-size: 16px;
+        line-height: 19px;
+    }
+}
+@media(max-width:434px){
+    .box-rounded{
+        display: none;
+    }
+    .left-hero .prijava{
+        margin-bottom: 15px;
+    }
+    .left-hero h2{
+        padding-left: 0;
+        font-size: 30px;
+        line-height: 34px;
+    }
+    .novi{display: inline-block;
+    margin: 10px 0;}
+}
+@media(max-width:366px){
+    .left-hero h2{
+        font-size: 26px;
+    }
 }
