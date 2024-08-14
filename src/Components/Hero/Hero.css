@@ -1,0 +1,56 @@
+.hero .theme-dark{
+    background: white;
+    color: #3d155f;  }
+.hero .right-hero img{
+    box-shadow: rgba(0, 0, 0, 0.45) 0px 25px 20px -20px;
+    border-radius: 50px;
+    width: 100%;
+}
+.hero{
+    padding:  100px 60px;
+    display: grid;
+    align-items: center;
+    grid-template-columns: 1.2fr 1fr;
+    gap: min(150px,20%);
+    font-size: 20px;
+    line-height: 26px;
+}
+.left-hero{
+    position: relative;
+}
+.left-hero h2{
+    font-size: 50px;
+    font-weight: 600;
+    padding-left: 80px;
+    margin-bottom: 30px;
+}
+.box-rounded{
+    width: 75px;
+    height: 50px;
+    background: white;
+    position: absolute;
+    left: 0;
+    top: -15px;
+    border: 1px solid white;
+}
+.box-dark{
+    background: #3d155f;
+}
+.left-hero p{
+    margin-top: 70px;
+    margin-bottom: 60px;
+}
+.left-hero .prijava{
+    background-color: #df678c;
+    border: 1px solid white;
+    padding: 10px 25px;
+    cursor: pointer;
+    font-size: 20px;
+    color: white;
+    margin-right: 20px;
+}
+.left-hero p span{
+    font-size: 30px;
+    display: block;
+    margin-top: 20px;
+}

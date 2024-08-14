@@ -1,13 +1,35 @@
 @import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&display=swap');
-*{
+
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   font-family: "League Spartan", sans-serif;
 }
-#root{
+
+#root {
   min-height: 100vh;
   background: #3d155f;
   color: white;
   width: 100%;
+}
+
+.theme-dark {
+  background: white;
+  color: #3d155f;
+  -webkit-box-shadow: 13px 13px 15px -20px rgba(255, 255, 255, 1);
+  -moz-box-shadow: 13px 13px 15px -20px rgba(255, 255, 255, 1);
+  box-shadow: 13px 13px 15px -20px rgba(255, 255, 255, 1);
+}
+
+.theme-dark-shadow {
+  -webkit-box-shadow: 0px 9px 5px -10px rgba(61, 21, 95, 1);
+  -moz-box-shadow: 0px 9px 5px -10px rgba(61, 21, 95, 1);
+  box-shadow: 0px 9px 5px -10px rgba(61, 21, 95, 1);
+}
+
+.theme-shadow {
+  -webkit-box-shadow: 0px 9px 5px -10px rgba(223, 103, 140, 1);
+  -moz-box-shadow: 0px 9px 5px -10px rgba(223, 103, 140, 1);
+  box-shadow: 0px 9px 5px -10px rgba(223, 103, 140, 1);
 }

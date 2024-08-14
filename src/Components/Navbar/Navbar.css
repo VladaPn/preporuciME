@@ -3,7 +3,7 @@
     justify-content: space-between;
     padding-left: 60px;
     align-items: start;
-    font-size: 20px;
+    font-size: 22px;
     position: relative;
 }
 .no-toggle-menu{
@@ -23,7 +23,7 @@ padding-right: 60px;
     display: flex;
     align-items: center;
     justify-content: space-around;
-    gap: 30px;
+    gap: 40px;
 }
 .menu-toggle{
     background-color: transparent;
@@ -54,6 +54,7 @@ padding-right: 60px;
 
 .nav-menu li:hover {
     background: #df678c;
+    color: white;
 }
 
 .login {
@@ -81,13 +82,7 @@ padding-right: 60px;
 .theme img {
     max-width: 100%;
 }
-.theme-dark {
-    background: white;
-    color: #3d155f;
-    -webkit-box-shadow: 13px 13px 15px -20px rgba(255, 255, 255, 1);
--moz-box-shadow: 13px 13px 15px -20px rgba(255, 255, 255, 1);
-box-shadow: 13px 13px 15px -20px rgba(255, 255, 255, 1);
-}
+
 .button-dark {
     border: 2px solid #3d155f;
 }
@@ -125,6 +120,11 @@ box-shadow: 13px 13px 15px -20px rgba(255, 255, 255, 1);
 .menu-closed{
     display: none;
 }
+@media(max-width:1100px){
+    .navbar {
+        font-size: 20px;
+    }
+}
 @media(max-width:1050px){
     .slika-logo{
         font-size: 30px;
@@ -138,6 +138,12 @@ box-shadow: 13px 13px 15px -20px rgba(255, 255, 255, 1);
     }
     .navbar .nav-menu{
         gap: 20px;
+    }
+    .navbar {
+        font-size: 20px;
+    }
+    .navbar .nav-menu {
+        gap: 30px;
     }
 }
 @media(max-width:935px){
