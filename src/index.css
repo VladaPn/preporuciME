@@ -17,9 +17,11 @@
 .theme-dark {
   background: white;
   color: #3d155f;
-  -webkit-box-shadow: 13px 13px 15px -20px rgba(255, 255, 255, 1);
-  -moz-box-shadow: 13px 13px 15px -20px rgba(255, 255, 255, 1);
-  box-shadow: 13px 13px 15px -20px rgba(255, 255, 255, 1);
+}
+.theme-normal-shadow{
+  -webkit-box-shadow: 13px 13px 15px -20px rgb(178, 178, 178);
+  -moz-box-shadow: 13px 13px 15px -20px rgb(178, 178, 178);
+  box-shadow: 13px 13px 15px -20px rgb(178, 178, 178);
 }
 
 .theme-dark-shadow {

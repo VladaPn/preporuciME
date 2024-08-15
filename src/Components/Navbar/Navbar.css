@@ -56,6 +56,10 @@ padding-right: 60px;
     background: #df678c;
     color: white;
 }
+.side-nav-menu li:hover{
+    background:#3d155f;
+    padding: 3px 5px;
+}
 
 .login {
     background-color: #df678c;

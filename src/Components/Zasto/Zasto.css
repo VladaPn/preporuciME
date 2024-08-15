@@ -1,0 +1,98 @@
+.zasto{
+    margin: 0;
+    padding:  100px 80px;
+    font-size: 20px;
+    line-height: 26px;
+}
+.zasto-top{
+    text-align: center;
+    margin-bottom: 80px;
+}
+.zasto-top h2{
+    font-size: 50px;
+    margin-bottom: 50px;
+}
+.zasto-grid{
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap: 50px;
+}
+.zasto-item{
+    position: relative;
+    padding: 100px 20px;
+    -webkit-box-shadow: 0px 0px 5px 0px rgba(255,255,255,1);
+-moz-box-shadow: 0px 0px 5px 0px rgba(255,255,255,1);
+box-shadow: 0px 0px 5px 0px rgba(255,255,255,1);
+}
+.zasto-item-shadow{
+    -webkit-box-shadow: 0px 0px 5px 0px rgba(60,21,95,1);
+-moz-box-shadow: 0px 0px 5px 0px rgba(60,21,95,1);
+box-shadow: 0px 0px 5px 0px rgba(60,21,95,1);
+}
+.zasto-item h4{
+    font-size: 30px;
+    margin-bottom: 20px;
+}
+.zasto-hover-item{
+    position: absolute;
+    background: white;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    display: flex; /* Menjamo display: none; u display: flex; */
+    align-items: center;
+    justify-content: center;
+    opacity: 0; /* Početno stanje nevidljivo */
+    visibility: hidden; /* Početno stanje nije vidljivo */
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+.zasto-hover-item img{
+    width: 120px;
+}
+.zasto-hover-item-dark{
+    background: #3d155f;
+}
+.zasto-item:hover .zasto-hover-item{
+    opacity: 1; /* Element postaje vidljiv */
+    visibility: visible; /* Prikazuje element */
+}
+@media(max-width:1250px){
+    .zasto-grid{
+        display: grid;
+        grid-template-columns: repeat(2,1fr);
+        gap: 50px;
+    }
+    .zasto-top h2{
+        font-size: 44px;
+    }
+}
+@media(max-width:729px){
+    .zasto-grid{
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 50px;
+    }
+}
+@media(max-width:600px){
+    .zasto-top h2{
+        font-size: 40px;
+        margin-bottom: 40px;
+    }
+}
+@media(max-width:512px){
+    .zasto-top h2{
+        font-size: 30px;
+        margin-bottom: 30px;
+    }
+    .zasto{
+        font-size: 18px;
+        line-height: 22px;
+        padding: 80px 40px;
+    }
+}
+@media(max-width:330px){
+    .zasto{
+        padding: 70px 30px;
+    }
+}

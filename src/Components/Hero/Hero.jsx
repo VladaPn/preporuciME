@@ -6,7 +6,7 @@ import hero_main from '../../assets/hero_main.jpg'
 const Hero = () => {
  const {theme} = useContext(ThemeContext);
   return (
-    <div className={`hero ${theme?'theme-dark':''}`}>
+    <div className={`hero ${theme?'theme-dark theme-normal-shadow':'theme-shadow'}`}>
       <div className="left-hero">
         <div className={`box-rounded ${theme?'box-dark':''}`}></div>
         <h2>Dobrodošli <br className='novi' /> na <br className='novi' /> PreporučiME</h2>

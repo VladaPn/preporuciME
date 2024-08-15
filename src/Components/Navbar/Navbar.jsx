@@ -13,7 +13,7 @@ const Navbar = () => {
   const { theme, setTheme} = useContext(ThemeContext)
   const [menuOpen, setMenuOpen] = useState(false);
   return (
-    <div className={`navbar ${theme?'theme-dark theme-dark-shadow':'theme-shadow'}`}>
+    <div className={`navbar ${theme?'theme-dark theme-normal-shadow':'theme-shadow'}`}>
       <div className="no-toggle-menu" id={`${menuOpen?'no-toggle':''}`}>
       <div className="slika-logo">
       <img src={`${theme?logo_light:logo_dark}`} alt="" /> <p><Link to='home' smooth={true} offset={0} duration={500} onClick={() => setMenuOpen(false)}>preporučiME</Link></p>
