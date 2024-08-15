@@ -2,35 +2,42 @@ import React, { useState, useEffect, useContext } from 'react';
 import './Pretraga.css';
 import { ThemeContext } from '../../Context/ThemeContext';
 import search_icon from '../../assets/search_icon.png';
+import sampleData from './data'; // Importujte sampleData iz data.js
 
 const Pretraga = () => {
   const [query, setQuery] = useState('');
   const [results, setResults] = useState([]);
+  const [sortOption, setSortOption] = useState('none'); // Add sorting option
   const { theme } = useContext(ThemeContext);
 
-  // Sample data for search (in a real application, this would be fetched from an API)
-  const sampleData = [
-    { id: 1, title: 'Preporuka 1', author: 'Autor 1', price: '1000 RSD', recommendations: 12 },
-    { id: 2, title: 'Preporuka 2', author: 'Autor 2', price: '2000 RSD', recommendations: 8 },
-    { id: 3, title: 'Usluga 1', author: 'Autor 3', price: '1500 RSD', recommendations: 5 },
-    { id: 4, title: 'Usluga 2', author: 'Autor 4', price: '2500 RSD', recommendations: 15 },
-    { id: 5, title: 'Trpanje u mesnoj', author: 'Vlada', price: 'iz ubedjenje', recommendations: 500 }
-    ,
-    { id: 6, title: 'Mučko i čoky', author: 'Mučko', price: 'bude', recommendations: 1 }
-    ,
-    { id: 7, title: 'Laza skače sa tobogana', author: 'Lazin bata', price: 'mnogo', recommendations: 0 }
-  ];
+  // Function to sort results based on sortOption
+  const sortResults = (data) => {
+    switch (sortOption) {
+      case 'recommendations':
+        return data.sort((a, b) => b.recommendations - a.recommendations);
+      case 'price':
+        return data.sort((a, b) => {
+          const priceA = parseInt(a.price.replace(' RSD', '').replace(/,/g, ''));
+          const priceB = parseInt(b.price.replace(' RSD', '').replace(/,/g, ''));
+          return priceA - priceB;
+        });
+      default:
+        return data;
+    }
+  };
 
-  // useEffect to filter results whenever query changes
+  // useEffect to filter and sort results whenever query or sortOption changes
   useEffect(() => {
     if (query.trim() === '') {
       setResults([]);
     } else {
-      setResults(sampleData.filter(item =>
+      let filteredResults = sampleData.filter(item =>
         item.title.toLowerCase().includes(query.toLowerCase())
-      ));
+      );
+      filteredResults = sortResults(filteredResults);
+      setResults(filteredResults);
     }
-  }, [query]); // Runs every time `query` changes
+  }, [query, sortOption]); // Runs every time `query` or `sortOption` changes
 
   return (
     <div className={`pretraga ${theme ? 'theme-dark' : 'theme-light'}`}>
@@ -50,12 +57,24 @@ const Pretraga = () => {
         </button>
       </div>
       
+      {/* Show sort options only if there are results */}
+      {query.trim() !== '' && (
+        <div className="sort-options">
+          <label>Sortiraj po:</label>
+          <select value={sortOption} onChange={(e) => setSortOption(e.target.value)}>
+            <option value="none">Nema sortiranja</option>
+            <option value="recommendations">Preporukama</option>
+            <option value="price">Ceni</option>
+          </select>
+        </div>
+      )}
+      
       <div className="search-results">
         {results.length > 0 ? (
           <ul>
             {results.map((item) => (
               <li key={item.id}>
-                <h3>{item.title}</h3>
+                <h3 className='item-title'>{item.title}</h3>
                 <p><strong>Autor:</strong> {item.author}</p>
                 <p><strong>Cena:</strong> {item.price}</p>
                 <p><strong>Broj preporuka:</strong> {item.recommendations}</p>

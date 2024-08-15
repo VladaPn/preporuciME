@@ -82,7 +82,15 @@ padding-right: 60px;
     background:#3d155f;
     padding: 3px 5px;
 }
-
+.overlay {
+    position: fixed; /* Ensure it covers the whole screen */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%; /* Cover full screen height */
+    background: transparent;
+    z-index: 3; /* Ensure it's above other content */
+  }
 .login {
     background-color: #df678c;
     text-transform: uppercase;

@@ -58,6 +58,23 @@
     width: 300px;
     margin-bottom: 30px;
   }
+  /*sort*/
+  .sort-options {
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+    text-align: center;
+  }
+  
+  .sort-options label {
+    margin-right: 0.5rem;
+  }
+  
+  .sort-options select {
+    padding: 0.5rem;
+    font-size: 1rem;
+  }
+  /* Stilizujte select polje */
+  
   @media(max-width:538px){
     .pretraga{
         padding:  80px 30px 20px 30px;
@@ -75,7 +92,18 @@
         padding: 8px 15px;
         font-size: 18px;
       }
+      .item-title{
+        font-size: 24px;
+        padding-left: min(5%,10px);
+      }
     }
+    .search-results ul{
+        margin-top: 20px;
+    }
+    .search-results ul li{
+        margin-bottom: 10px;
+    }
+
     @media(max-width:512px){
         .pretraga-opis{
             font-size: 20px;
