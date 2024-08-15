@@ -5,7 +5,7 @@ import logo_light from '../../assets/logo_light.png';
 import theme_sun from '../../assets/theme_sun.png';
 import theme_moon from '../../assets/theme_moon.png';
 import {Routes, Route} from "react-router-dom";
-import { Link } from 'react-scroll';
+import { Link } from 'react-router-dom';
 import { ThemeContext } from '../../Context/ThemeContext';
 
 const Navbar = () => {
@@ -16,13 +16,13 @@ const Navbar = () => {
     <div className={`navbar ${theme?'theme-dark theme-normal-shadow':'theme-shadow'}`}>
       <div className="no-toggle-menu" id={`${menuOpen?'no-toggle':''}`}>
       <div className="slika-logo">
-      <img src={`${theme?logo_light:logo_dark}`} alt="" /> <p><Link to='home' smooth={true} offset={0} duration={500} onClick={() => setMenuOpen(false)}>preporučiME</Link></p>
+      <img src={`${theme?logo_light:logo_dark}`} alt="" /> <p className={`${theme?'slika-logo-tekst':''}`}><Link to='/' >preporučiME</Link></p>
       </div>
-      <ul className='nav-menu'>
-        <li><Link to='hero' smooth={true} offset={0} duration={500} onClick={() => setMenuOpen(false)}>Home</Link></li>
-        <li><Link to='/pretraga' smooth={true} offset={0} duration={500} onClick={() => setMenuOpen(false)}>Pretraga</Link></li>
-        <li><Link to='/profil' smooth={true} offset={0} duration={500} onClick={() => setMenuOpen(false)}>Profil</Link></li>
-        <li><Link to='/premium' smooth={true} offset={0} duration={500} onClick={() => setMenuOpen(false)}>Premium</Link></li>
+      <ul className={`nav-menu ${theme?'nav-menu-dark':''}`}>
+        <li><Link to='/' >Home</Link></li>
+        <li><Link to='/pretraga' >Pretraga</Link></li>
+        <li><Link to='/profil' >Profil</Link></li>
+        <li><Link to='/premium' >Premium</Link></li>
       </ul>
       <button className='login'>Login</button>
       <button onClick={()=>{setTheme(prevCheck => !prevCheck)
@@ -33,10 +33,10 @@ const Navbar = () => {
       </div>
       <div className={`side-menu ${menuOpen?'':'menu-closed'}`}>
       <ul className='side-nav-menu'>
-      <li><Link to='hero' smooth={true} offset={0} duration={500} onClick={() => setMenuOpen(false)}>Home</Link></li>
-        <li><Link to='/pretraga' smooth={true} offset={0} duration={500} onClick={() => setMenuOpen(false)}>Pretraga</Link></li>
-        <li><Link to='/profil' smooth={true} offset={0} duration={500} onClick={() => setMenuOpen(false)}>Profil</Link></li>
-        <li><Link to='/premium' smooth={true} offset={0} duration={500} onClick={() => setMenuOpen(false)}>Premium</Link></li>
+      <li><Link to='/' >Home</Link></li>
+        <li><Link to='/pretraga' >Pretraga</Link></li>
+        <li><Link to='/profil' >Profil</Link></li>
+        <li><Link to='/premium'>Premium</Link></li>
         <button>Login</button>
       </ul>
       </div>

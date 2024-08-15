@@ -46,17 +46,39 @@ padding-right: 60px;
     cursor: pointer;
 }
 
-.nav-menu li {
+.nav-menu li a{
     cursor: pointer;
     padding: 5px 10px;
     transition: all 0.2s linear;
+    color: white;
+    text-decoration: none;
 }
-
-.nav-menu li:hover {
+.nav-menu li a{
+    cursor: pointer;
+    padding: 5px 10px;
+    transition: all 0.2s linear;
+    color: white;
+    text-decoration: none;
+}
+.nav-menu-dark li a{
+    color: #3d155f;
+}
+.slika-logo a{
+    color: white;
+    text-decoration: none;
+}
+.slika-logo-tekst a{
+    color: #3d155f;
+}
+.nav-menu li a:hover {
     background: #df678c;
     color: white;
 }
-.side-nav-menu li:hover{
+.side-nav-menu li a{
+    text-decoration: none;
+    color: white;
+}
+.side-nav-menu li a:hover{
     background:#3d155f;
     padding: 3px 5px;
 }
