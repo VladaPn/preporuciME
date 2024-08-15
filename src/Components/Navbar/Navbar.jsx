@@ -3,6 +3,7 @@ import './Navbar.css';
 import logo_dark from '../../assets/logo_dark.png';
 import logo_light from '../../assets/logo_light.png';
 import theme_sun from '../../assets/theme_sun.png';
+import user from '../../assets/user.png';
 import theme_moon from '../../assets/theme_moon.png';
 import {Routes, Route} from "react-router-dom";
 import { Link } from 'react-router-dom';
@@ -25,6 +26,7 @@ const Navbar = () => {
         <li><Link to='/premium' >Premium</Link></li>
       </ul>
       <button className='login'>Login</button>
+      <a href="" className="korisnik"><img src={user} alt="" /></a>
       <button onClick={()=>{setTheme(prevCheck => !prevCheck)
       }} className={`theme ${theme?'button-dark':''}`}><img src={`${theme?theme_moon:theme_sun}`} alt="" /></button>
       <button className={`menu-toggle ${theme?'menu-toggle-dark':''}`} onClick={() => setMenuOpen(!menuOpen)}>
@@ -37,6 +39,7 @@ const Navbar = () => {
         <li><Link to='/pretraga' >Pretraga</Link></li>
         <li><Link to='/profil' >Profil</Link></li>
         <li><Link to='/premium'>Premium</Link></li>
+        <a href="" className="korisnik"><img src={user} alt="" /></a>
         <button>Login</button>
       </ul>
       </div>
