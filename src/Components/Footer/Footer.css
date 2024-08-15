@@ -1,0 +1,113 @@
+.footer{
+    padding: 100px 80px 0 80px; 
+}
+.footer-main{
+    display: grid;
+    grid-template-columns:1fr 1fr;
+    padding-bottom: 80px;
+}
+.right-footer{
+    display: grid;
+    grid-template-columns:1fr 1fr;
+    gap: 20px;
+}
+.slika-logo{
+    cursor: pointer;
+}
+.slika-logo img{
+    width: 100px;
+}
+.footer h3{
+    font-size: 28px;
+    margin-bottom: 16px;
+}
+.footer-contact p{
+    margin-bottom: 10px;
+}
+.footer a{
+    text-decoration: none;
+    color: #df678c;
+    font-weight: 500;  
+    border-bottom: 2px solid transparent;
+}
+.footer a:hover{
+    border-bottom: 2px solid #df678c;
+}
+.footer-contact, .follow-us{
+    font-size: 18px;
+}
+.follow-us a{
+    margin-right: 10px;
+}
+.copyright{
+    text-align: center;
+    padding-bottom: 40px;
+}
+@media(max-width:1138px){
+    .footer-contact, .follow-us{
+        font-size: 16px;
+    }
+}
+@media(max-width:1051px){
+    .footer-main{
+        display: grid;
+        grid-template-columns:1fr 1.2fr;
+        padding-bottom: 80px;
+    }
+}
+@media(max-width:960px){
+    .footer-main{
+        grid-template-columns:1fr;
+        gap: 50px;
+    }
+    .footer-contact, .follow-us{
+        font-size: 18px;
+    }
+}
+@media(max-width:650px){
+    .footer-contact, .follow-us{
+        font-size: 15px;
+    }
+}
+@media(max-width:585px){
+    .slika-logo{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    .right-footer{
+        grid-template-columns:1fr;
+        gap: 20px;
+        align-items: center;
+    }
+    .footer-contact, .follow-us{
+        font-size: 17px;
+    }
+}
+@media(max-width:512px){
+    .footer{
+        padding: 80px 40px 0 40px;
+    }
+}
+@media(max-width:443px){
+    .copyright{
+        font-size: 14px;
+    }
+    .footer-contact, .follow-us{
+        font-size: 15px;
+    }
+    .footer h3{
+        font-size: 24px;
+    }
+}
+@media (max-width: 331px) {
+    .copyright{
+        font-size: 13px;
+    }
+}
+@media (max-width: 313px) {
+    .copyright{
+        font-size: 12px;
+    }
+}

@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { ThemeProvider } from './Context/ThemeContext'
 import Hero from './Components/Hero/Hero';
 import Zasto from './Components/Zasto/Zasto';
+import Footer from './Components/Footer/Footer';
 
 const App = () => {
   return (
@@ -13,6 +14,7 @@ const App = () => {
       <Navbar/>
       <Hero/>
       <Zasto/>
+      <Footer/>
       </ThemeProvider>
     </div>
   )
