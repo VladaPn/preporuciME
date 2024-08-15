@@ -15,6 +15,10 @@ const Pretraga = () => {
     { id: 3, title: 'Usluga 1', author: 'Autor 3', price: '1500 RSD', recommendations: 5 },
     { id: 4, title: 'Usluga 2', author: 'Autor 4', price: '2500 RSD', recommendations: 15 },
     { id: 5, title: 'Trpanje u mesnoj', author: 'Vlada', price: 'iz ubedjenje', recommendations: 500 }
+    ,
+    { id: 6, title: 'Mučko i čoky', author: 'Mučko', price: 'bude', recommendations: 1 }
+    ,
+    { id: 7, title: 'Laza skače sa tobogana', author: 'Lazin bata', price: 'mnogo', recommendations: 0 }
   ];
 
   // useEffect to filter results whenever query changes

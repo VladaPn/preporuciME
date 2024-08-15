@@ -16,8 +16,8 @@ const Navbar = () => {
   return (
     <div className={`navbar ${theme?'theme-dark theme-normal-shadow':'theme-shadow'}`}>
       <div className="no-toggle-menu" id={`${menuOpen?'no-toggle':''}`}>
-      <div className="slika-logo">
-      <img src={`${theme?logo_light:logo_dark}`} alt="" /> <p className={`${theme?'slika-logo-tekst':''}`}><Link to='/' >preporučiME</Link></p>
+      <div className={`slika-logo ${theme?'slika-logo-tekst':''}`}>
+      <Link to='/' ><img src={`${theme?logo_light:logo_dark}`} alt="" /></Link> <Link to='/' ><p>preporučiME</p></Link>
       </div>
       <ul className={`nav-menu ${theme?'nav-menu-dark':''}`}>
         <li><Link to='/' >Home</Link></li>
