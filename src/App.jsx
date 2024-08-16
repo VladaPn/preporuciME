@@ -6,6 +6,7 @@ import { ThemeProvider } from './Context/ThemeContext';
 import Footer from './Components/Footer/Footer';
 import Pretraga from './Pages/Pretraga/Pretraga';
 import Home from './Pages/Home/Home';
+import PreporukaDetalj from './Pages/PreporukaDetalj/PreporukaDetalj';
 
 const App = () => {
   return (
@@ -16,6 +17,7 @@ const App = () => {
           <Routes>
           <Route path="/" element={<Home />} />
             <Route path="/pretraga" element={<Pretraga />} />
+            <Route path="/preporuka/:id" element={<PreporukaDetalj />} />
           </Routes>
           <Footer />
         </ThemeProvider>

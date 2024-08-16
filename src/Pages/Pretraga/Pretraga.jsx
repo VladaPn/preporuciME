@@ -3,30 +3,38 @@ import './Pretraga.css';
 import { ThemeContext } from '../../Context/ThemeContext';
 import search_icon from '../../assets/search_icon.png';
 import sampleData from './data'; // Importujte sampleData iz data.js
+import Preporuka from '../../Components/Preporuka/Preporuka';
+
 
 const Pretraga = () => {
   const [query, setQuery] = useState('');
   const [results, setResults] = useState([]);
-  const [sortOption, setSortOption] = useState('none'); // Add sorting option
+  const [sortOption, setSortOption] = useState('none');
   const { theme } = useContext(ThemeContext);
 
-  // Function to sort results based on sortOption
   const sortResults = (data) => {
     switch (sortOption) {
-      case 'recommendations':
+      case 'recommendations-asc':
+        return data.sort((a, b) => a.recommendations - b.recommendations);
+      case 'recommendations-desc':
         return data.sort((a, b) => b.recommendations - a.recommendations);
-      case 'price':
+      case 'price-asc':
         return data.sort((a, b) => {
           const priceA = parseInt(a.price.replace(' RSD', '').replace(/,/g, ''));
           const priceB = parseInt(b.price.replace(' RSD', '').replace(/,/g, ''));
           return priceA - priceB;
+        });
+      case 'price-desc':
+        return data.sort((a, b) => {
+          const priceA = parseInt(a.price.replace(' RSD', '').replace(/,/g, ''));
+          const priceB = parseInt(b.price.replace(' RSD', '').replace(/,/g, ''));
+          return priceB - priceA;
         });
       default:
         return data;
     }
   };
 
-  // useEffect to filter and sort results whenever query or sortOption changes
   useEffect(() => {
     if (query.trim() === '') {
       setResults([]);
@@ -37,7 +45,7 @@ const Pretraga = () => {
       filteredResults = sortResults(filteredResults);
       setResults(filteredResults);
     }
-  }, [query, sortOption]); // Runs every time `query` or `sortOption` changes
+  }, [query, sortOption]);
 
   return (
     <div className={`pretraga ${theme ? 'theme-dark' : 'theme-light'}`}>
@@ -57,14 +65,15 @@ const Pretraga = () => {
         </button>
       </div>
       
-      {/* Show sort options only if there are results */}
       {query.trim() !== '' && (
         <div className="sort-options">
           <label>Sortiraj po:</label>
           <select value={sortOption} onChange={(e) => setSortOption(e.target.value)}>
             <option value="none">Nema sortiranja</option>
-            <option value="recommendations">Preporukama</option>
-            <option value="price">Ceni</option>
+            <option value="recommendations-asc">Preporuke (Rastuće)</option>
+            <option value="recommendations-desc">Preporuke (Opadajuće)</option>
+            <option value="price-asc">Cena (Rastuće)</option>
+            <option value="price-desc">Cena (Opadajuće)</option>
           </select>
         </div>
       )}
@@ -73,22 +82,7 @@ const Pretraga = () => {
         {results.length > 0 ? (
           <ul>
             {results.map((item) => (
-              <li key={item.id}>
-                <div className="service-container">
-                <div className="service">
-                <h3 className='item-title'>{item.title}</h3>
-                <img src={item.image} alt="" />
-                </div>
-                <div className="service-spec">
-                <p><strong>Autor:</strong> {item.author}</p>
-                <p><strong>Cena:</strong> {item.price}</p>
-                <p><strong>Broj preporuka:</strong> {item.recommendations}</p>
-                </div>
-                </div>
-                <div className="preporuci">
-                  <button>Pogledaj</button><button>Preporuci</button>
-                </div>
-              </li>
+              <Preporuka key={item.id} item={item} />
             ))}
           </ul>
         ) : (
@@ -100,5 +94,7 @@ const Pretraga = () => {
 };
 
 export default Pretraga;
+
+
 
 

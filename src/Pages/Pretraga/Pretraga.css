@@ -42,22 +42,7 @@
   .service img{
     width: min(300px,70%);
   }
-  .preporuci button{
-    background-color: #df678c;
-    border: 1px solid white;
-    padding: 10px 25px;
-    cursor: pointer;
-    font-size: 20px;
-    color: white;
-    margin-right: 20px;
-  }
-  .service h3{
-    padding-bottom: 15px;
-    font-size: 24px;
-  }
-  .search-results p {
-    font-style: italic;
-  }
+  
   .pretraga h2{
     font-size: 50px;
     font-weight: 600;
@@ -73,6 +58,7 @@
   }
   .search-results p{
     padding-top: 15px;
+    text-align: center;
   }
   .search-img{
     display: block;
@@ -98,11 +84,17 @@
   }
 
   /* Stilizujte select polje */
+  @media(max-width:1240px){
+    .preporuci button{
+      padding: 8px 20px;
+      font-size: 16px;
+      }
+  }
   @media(max-width:1056px){
     .search-results li {
       grid-template-columns: 1.5fr 1fr;
-    }
-  }
+    }}
+    
   @media(max-width:911px){
     .search-results li {
       grid-template-columns: 1fr;
@@ -114,7 +106,7 @@
   @media(max-width:780px){
     .preporuci button{
     padding: 8px 20px;
-    font-size: 18px;
+    font-size: 15px;
     }
     .service-container{
       grid-template-columns: 1.5fr 1fr;
@@ -130,9 +122,6 @@
     }
     .service,.service-spec,.preporuci{
       text-align: center;
-    }
-    .preporuci button:last-child{
-      margin-right: 0;
     }
   }
   @media(max-width:538px){
