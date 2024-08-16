@@ -34,7 +34,7 @@ const Preporuka = ({ item }) => {
   return (
     <li>
       <div className="service-container">
-        <Link to={`/preporuka/${item.id}`} target="_blank">
+        <Link to={`/preporuka/${item.id}`} >
           <div className="service">
             <h3 className='item-title'>{item.title}</h3>
             <img src={item.image} alt="" />
@@ -47,7 +47,7 @@ const Preporuka = ({ item }) => {
         </div>
       </div>
       <div className="preporuci">
-        <Link to={`/preporuka/${item.id}`} target="_blank">
+        <Link to={`/preporuka/${item.id}`} >
           <button className='pogledaj-btn'>Pogledaj</button>
         </Link>
         <button onClick={handlePreporuku}>
