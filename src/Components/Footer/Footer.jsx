@@ -18,8 +18,8 @@ const Footer = () => {
       <div className="right-footer">
       <div className='footer-contact'>
         <h3>Kontakt</h3>
-        <p>Email: <a href="mailto:kontakt@preporucime.rs?subject=Upit%20za%20uslugu&body=Pozdrav,%20imam%20pitanje%20u%20vezi%20usluge...">
-        kontakt@preporucime.rs
+        <p>Email: <a href="mailto:preporucimeoffice@gmail.com?subject=Upit%20za%20uslugu&body=Pozdrav,%20imam%20pitanje%20u%20vezi%20usluge...">
+        preporucimeoffice@gmail.com
 </a></p>
         <p>Telefon: <a href="tel:+3811234567">+381 123 4567</a></p>
       </div>
@@ -27,8 +27,8 @@ const Footer = () => {
         <h3>Pratite nas</h3>
         <p>
           <a href="https://www.facebook.com/preporucime">Facebook</a> 
-          <a href="https://www.instagram.com/preporucime">Instagram</a> 
-          <a href="https://www.twitter.com/preporucime">Twitter</a>
+          <a href="https://www.instagram.com/preporucime_/e">Instagram</a> 
+          <a href="https://x.com/preporuciME?t=7WmwAMaGA0xCLv9IZZsK1A&s=09">Twitter</a>
           </p>
           </div>
           </div>

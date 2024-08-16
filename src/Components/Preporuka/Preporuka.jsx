@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './Preporuka.css';
-import sampleData from '../../Pages/Pretraga/data'; // Importujte sampleData iz data.js
+import sampleData from '../../data/data'; // Importujte sampleData iz data.js
 const Preporuka = ({ item }) => {
   const [preporuke, setPreporuke] = useState(item.recommendations);
   const [preporuceno, setPreporuceno] = useState(false);
@@ -24,10 +24,12 @@ const Preporuka = ({ item }) => {
   return (
     <li>
       <div className="service-container">
+      <Link to={`/preporuka/${item.id}`} target="_blank">
         <div className="service">
           <h3 className='item-title'>{item.title}</h3>
           <img src={item.image} alt="" />
         </div>
+        </Link>
         <div className="service-spec">
           <p><strong>Autor:</strong> {item.author}</p>
           <p><strong>Cena:</strong> {item.price}</p>

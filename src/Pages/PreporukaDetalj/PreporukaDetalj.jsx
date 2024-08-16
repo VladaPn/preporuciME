@@ -1,8 +1,9 @@
 import React, { useState, useContext } from 'react';
 import { useParams } from 'react-router-dom';
-import sampleData from '../Pretraga/data'; // Uvozimo podatke
+import sampleData from '../../data/data'; // Uvozimo podatke
 import { ThemeContext } from '../../Context/ThemeContext';
 import './PreporukaDetalj.css';
+import Komentar from '../../Components/Komentar/Komentar';
 
 const PreporukaDetalj = () => {
   const { id } = useParams(); // Dobijamo ID iz URL-a
@@ -51,6 +52,7 @@ const PreporukaDetalj = () => {
           </div>
         </div>
       </div>
+      <Komentar/>
     </div>
   );
 };

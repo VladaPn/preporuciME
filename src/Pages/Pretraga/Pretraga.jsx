@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from 'react';
 import './Pretraga.css';
 import { ThemeContext } from '../../Context/ThemeContext';
 import search_icon from '../../assets/search_icon.png';
-import sampleData from './data'; // Importujte sampleData iz data.js
+import sampleData from '../../data/data.js'// Importujte sampleData iz data.js
 import Preporuka from '../../Components/Preporuka/Preporuka';
 
 const Pretraga = () => {
