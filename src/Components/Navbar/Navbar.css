@@ -1,3 +1,4 @@
+/* Postojeći stilovi */
 .navbar {
     display: flex;
     justify-content: space-between;
@@ -6,15 +7,14 @@
     font-size: 22px;
     position: relative;
 }
-.no-toggle-menu{
-display: flex;
-justify-content: space-between;
-align-items: center;
-gap: 10px;
-width: 100%;
-padding-right: 60px;
+.no-toggle-menu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    padding-right: 60px;
 }
-
 .navbar img {
     width: 100px;
 }
@@ -25,7 +25,7 @@ padding-right: 60px;
     justify-content: space-around;
     gap: 40px;
 }
-.menu-toggle{
+.menu-toggle {
     background-color: transparent;
     color: white;
     height: 50px;
@@ -45,52 +45,44 @@ padding-right: 60px;
     font-weight: 600;
     cursor: pointer;
 }
-
-.nav-menu li a{
+.nav-menu li a {
     cursor: pointer;
     padding: 5px 10px;
     transition: all 0.2s linear;
     color: white;
     text-decoration: none;
 }
-.nav-menu li a{
-    cursor: pointer;
-    padding: 5px 10px;
-    transition: all 0.2s linear;
-    color: white;
-    text-decoration: none;
-}
-.nav-menu-dark li a{
+.nav-menu-dark li a {
     color: #3d155f;
 }
-.slika-logo a{
+.slika-logo a {
     color: white;
     text-decoration: none;
 }
-.slika-logo-tekst a{
+.slika-logo-tekst a {
     color: #3d155f;
 }
 .nav-menu li a:hover {
     background: #df678c;
     color: white;
 }
-.side-nav-menu li a{
+.side-nav-menu li a {
     text-decoration: none;
     color: white;
 }
-.side-nav-menu li a:hover{
-    background:#3d155f;
+.side-nav-menu li a:hover {
+    background: #3d155f;
     padding: 3px 5px;
 }
 .overlay {
-    position: fixed; /* Ensure it covers the whole screen */
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%; /* Cover full screen height */
-    background: transparent;
-    z-index: 3; /* Ensure it's above other content */
-  }
+    height: 100%;
+    background: transparent; /* Poluprovidna pozadina */
+    z-index: 5; /* Ispod side menija, ali iznad ostalog sadržaja */
+}
 .login {
     background-color: #df678c;
     text-transform: uppercase;
@@ -102,7 +94,6 @@ padding-right: 60px;
     font-weight: 500;
     letter-spacing: 2px;
 }
-
 .theme {
     height: 50px;
     width: 50px;
@@ -116,22 +107,25 @@ padding-right: 60px;
 .theme img {
     max-width: 100%;
 }
-
 .button-dark {
     border: 2px solid #3d155f;
 }
-.side-menu{
+.side-menu {
     background-color: #df678c;
     color: white;
-    width: 250px;
-    height: 100% !important;
-    min-height: 100vh;
+    width: 250px; /* Širina za veće ekrane */
+    height: 100vh; /* Puni ekran visine */
     position: fixed;
     right: 0;
     top: 0;
     z-index: 10;
+    overflow-y: auto; /* Omogućava skrolovanje ako je potrebno */
+    transition: transform 0.3s ease; /* Glatka animacija za otvaranje/zatvaranje */
 }
-.side-nav-menu{
+.side-menu.menu-closed {
+    transform: translateX(100%); /* Sakrij meni sa desne strane */
+}
+.side-nav-menu {
     list-style: none;
     display: flex;
     flex-direction: column;
@@ -139,7 +133,7 @@ padding-right: 60px;
     padding-top: 30px;
     gap: 15px;
 }
-.side-menu button{
+.side-menu button {
     background-color: white;
     text-transform: uppercase;
     border: none;
@@ -150,35 +144,37 @@ padding-right: 60px;
     font-weight: 500;
     letter-spacing: 2px;
 }
-.menu-toggle-dark{
+.menu-toggle-dark {
     color: #3d155f;
 }
-.menu-closed{
+.menu-closed {
     display: none;
 }
-.korisnik{
+.korisnik {
     display: none;
 }
-.korisnik img{
+.korisnik img {
     max-width: 20px;
 }
-@media(max-width:1100px){
+
+/* Medijske upite */
+@media(max-width: 1100px) {
     .navbar {
         font-size: 20px;
     }
 }
-@media(max-width:1050px){
-    .slika-logo{
+@media(max-width: 1050px) {
+    .slika-logo {
         font-size: 30px;
         gap: 10px;
     }
-    .navbar img{
+    .navbar img {
         width: 80px;
     }
-    .navbar{
+    .navbar {
         padding-top: 10px;
     }
-    .navbar .nav-menu{
+    .navbar .nav-menu {
         gap: 20px;
     }
     .navbar {
@@ -188,14 +184,14 @@ padding-right: 60px;
         gap: 30px;
     }
 }
-@media(max-width:950px){
-    .navbar .nav-menu{
+@media(max-width: 950px) {
+    .navbar .nav-menu {
         gap: 15px;
     }
-    .navbar{
+    .navbar {
         font-size: 17px;
     }
-    .slika-logo{
+    .slika-logo {
         font-size: 26px;
         gap: 10px;
     }
@@ -215,140 +211,141 @@ padding-right: 60px;
         letter-spacing: 1px;
     }
 }
-@media(min-width:829px){
-    .menu-toggle,.side-menu{
+@media(min-width: 829px) {
+    .menu-toggle, .side-menu {
         display: none;
     }
 }
-@media(max-width:829px){
-.navbar .nav-menu{
-    display: none;
+@media(max-width: 829px) {
+    .navbar .nav-menu {
+        display: none; /* Sakrij nav meni na manjim ekranima */
+    }
+    .no-toggle-menu {
+        justify-content: center;
+        gap: 50px;
+    }
+    .menu-toggle {
+        display: block; /* Prikaz dugmeta za meni */
+    }
+    #no-toggle {
+        padding-right: 250px; /* Prilagodite širinu */
+    }
+    .login {
+        display: none; /* Sakrij login dugme */
+    }
+    .slika-logo {
+        font-size: 28px;
+        gap: 10px;
+    }
 }
-.no-toggle-menu{
-    justify-content: center;
-    gap: 50px;
-}
-.menu-toggle{
-    display: block;
-}
-#no-toggle{
-    padding-right: 250px;
-}
-.login{
-    display: none;
-}
-.slika-logo{
-    font-size: 28px;
-    gap: 10px;
-}
-}
-@media(max-width:775px){
-    .slika-logo{
+@media(max-width: 775px) {
+    .slika-logo {
         font-size: 26px;
         gap: 10px;
     }
-    .navbar .nav-menu{
+    .navbar .nav-menu {
         gap: 10px;
     }
-    #no-toggle{
+    #no-toggle {
         padding-right: 200px;
     }
-    .navbar img{
+    .navbar img {
         width: 60px;
     }
-    .side-menu{
+    .side-menu {
         width: 200px;
     }
 }
-@media(max-width:690px){
-    .side-menu{
+@media(max-width: 690px) {
+    .side-menu {
         width: 150px;
     }
-    #no-toggle{
+    #no-toggle {
         padding-right: 150px;
     }
-    .no-toggle-menu{
+    .no-toggle-menu {
         gap: 30px;
     }
 }
-@media(max-width:587px){
-.slika-logo p{
-    display: none;
+@media(max-width: 587px) {
+    .slika-logo p {
+        display: none;
+    }
 }
-}
-@media(max-width:535px){
-    .side-menu{
+@media(max-width: 535px) {
+    .side-menu {
         width: 100px;
     }
-    #no-toggle{
+    #no-toggle {
         padding-right: 120px;
     }
-    .navbar{
+    .navbar {
         padding-left: 40px;
     }
-    .side-menu button{
+    .side-menu button {
         padding: 5px 10px;
         font-weight: 500;
         letter-spacing: 1px;
     }
-    .theme{
+    .theme {
         width: 30px;
         height: 30px;
         padding: 6px;
     }
-    .menu-toggle{
+    .menu-toggle {
         height: 40px;
         width: 40px;
         font-size: 25px;
     }
-    .slika-logo{
+    .slika-logo {
         font-size: 22px;
     }
 }
-@media(max-width:489px){
-    #no-toggle{
+@media(max-width: 489px) {
+    #no-toggle {
         padding-right: 100px;
     }
-    .side-menu{
+    .side-menu {
         width: 85px;
     }
-    .navbar{
+    .navbar {
         padding-left: 25px;
     }
 }
-@media(max-width:428px){
-    #no-toggle{
+@media(max-width: 428px) {
+    #no-toggle {
         padding-right: 90px;
     }
-    .side-menu{
+    .side-menu {
         width: 80px;
     }
-    .navbar{
+    .navbar {
         padding-left: 20px;
     }
-    .no-toggle-menu{
+    .no-toggle-menu {
         gap: 20px;
     }
 }
-@media(max-width:392px){
-    #no-toggle{
+@media(max-width: 392px) {
+    #no-toggle {
         padding-right: 80px;
     }
-    .side-menu{
+    .side-menu {
         width: 75px;
     }
-    .navbar{
+    .navbar {
         padding-left: 20px;
     }
-    .no-toggle-menu{
+    .no-toggle-menu {
         gap: 15px;
     }
 }
-@media(max-width:365px){
-    .slika-logo p{
+@media(max-width: 365px) {
+    .slika-logo p {
         display: none;
     }
 }
+
 /*.no-toggle-menu{
 display: flex;
 justify-content: space-between;

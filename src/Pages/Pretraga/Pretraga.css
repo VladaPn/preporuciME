@@ -41,6 +41,7 @@
   }
   .service img{
     width: min(300px,70%);
+    border-radius: 20px;
   }
   
   .pretraga h2{

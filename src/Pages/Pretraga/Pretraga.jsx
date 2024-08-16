@@ -5,7 +5,6 @@ import search_icon from '../../assets/search_icon.png';
 import sampleData from './data'; // Importujte sampleData iz data.js
 import Preporuka from '../../Components/Preporuka/Preporuka';
 
-
 const Pretraga = () => {
   const [query, setQuery] = useState('');
   const [results, setResults] = useState([]);
@@ -36,14 +35,23 @@ const Pretraga = () => {
   };
 
   useEffect(() => {
+    const savedResults = localStorage.getItem('searchResults');
+    if (savedResults) {
+      setResults(JSON.parse(savedResults));
+    }
+  }, []);
+
+  useEffect(() => {
     if (query.trim() === '') {
       setResults([]);
+      localStorage.removeItem('searchResults');
     } else {
       let filteredResults = sampleData.filter(item =>
         item.title.toLowerCase().includes(query.toLowerCase())
       );
       filteredResults = sortResults(filteredResults);
       setResults(filteredResults);
+      localStorage.setItem('searchResults', JSON.stringify(filteredResults));
     }
   }, [query, sortOption]);
 
@@ -94,6 +102,12 @@ const Pretraga = () => {
 };
 
 export default Pretraga;
+
+
+
+
+
+
 
 
 

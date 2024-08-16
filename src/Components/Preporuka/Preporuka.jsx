@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './Preporuka.css';
-
+import sampleData from '../../Pages/Pretraga/data'; // Importujte sampleData iz data.js
 const Preporuka = ({ item }) => {
   const [preporuke, setPreporuke] = useState(item.recommendations);
   const [preporuceno, setPreporuceno] = useState(false);
@@ -13,6 +13,12 @@ const Preporuka = ({ item }) => {
       setPreporuke(preporuke + 1);
     }
     setPreporuceno(!preporuceno);
+
+    // Update localStorage
+    const updatedData = sampleData.map(dataItem => 
+      dataItem.id === item.id ? { ...dataItem, recommendations: preporuke } : dataItem
+    );
+    localStorage.setItem('preporukeData', JSON.stringify(updatedData));
   };
 
   return (
@@ -29,8 +35,7 @@ const Preporuka = ({ item }) => {
         </div>
       </div>
       <div className="preporuci">
-        {/* Dodaj Link komponentu za navigaciju */}
-        <Link to={`/preporuka/${item.id}`}>
+        <Link to={`/preporuka/${item.id}`} target="_blank">
           <button className='pogledaj-btn'>Pogledaj</button>
         </Link>
         <button onClick={handlePreporuku}>
@@ -42,5 +47,7 @@ const Preporuka = ({ item }) => {
 };
 
 export default Preporuka;
+
+
 
 
