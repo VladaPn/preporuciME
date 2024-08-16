@@ -1,22 +1,32 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './Preporuka.css';
-import sampleData from '../../data/data'; // Importujte sampleData iz data.js
+import sampleData from '../../data/data'; // Import sampleData from data.js
+
 const Preporuka = ({ item }) => {
   const [preporuke, setPreporuke] = useState(item.recommendations);
   const [preporuceno, setPreporuceno] = useState(false);
 
-  const handlePreporuku = () => {
-    if (preporuceno) {
-      setPreporuke(preporuke - 1);
-    } else {
-      setPreporuke(preporuke + 1);
+  // Load initial state from localStorage if available
+  useEffect(() => {
+    const storedData = JSON.parse(localStorage.getItem('preporukeData')) || [];
+    const storedItem = storedData.find(dataItem => dataItem.id === item.id);
+    if (storedItem) {
+      setPreporuke(storedItem.recommendations);
+      setPreporuceno(storedItem.preporuceno);
     }
+  }, [item.id]);
+
+  const handlePreporuku = () => {
+    const newCount = preporuceno ? preporuke - 1 : preporuke + 1;
+    setPreporuke(newCount);
     setPreporuceno(!preporuceno);
 
     // Update localStorage
-    const updatedData = sampleData.map(dataItem => 
-      dataItem.id === item.id ? { ...dataItem, recommendations: preporuke } : dataItem
+    const updatedData = (JSON.parse(localStorage.getItem('preporukeData')) || sampleData).map(dataItem => 
+      dataItem.id === item.id 
+        ? { ...dataItem, recommendations: newCount, preporuceno: !preporuceno } 
+        : dataItem
     );
     localStorage.setItem('preporukeData', JSON.stringify(updatedData));
   };
@@ -24,11 +34,11 @@ const Preporuka = ({ item }) => {
   return (
     <li>
       <div className="service-container">
-      <Link to={`/preporuka/${item.id}`} target="_blank">
-        <div className="service">
-          <h3 className='item-title'>{item.title}</h3>
-          <img src={item.image} alt="" />
-        </div>
+        <Link to={`/preporuka/${item.id}`} target="_blank">
+          <div className="service">
+            <h3 className='item-title'>{item.title}</h3>
+            <img src={item.image} alt="" />
+          </div>
         </Link>
         <div className="service-spec">
           <p><strong>Autor:</strong> {item.author}</p>
@@ -49,6 +59,7 @@ const Preporuka = ({ item }) => {
 };
 
 export default Preporuka;
+
 
 
 

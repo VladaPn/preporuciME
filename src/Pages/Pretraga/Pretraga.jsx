@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from 'react';
 import './Pretraga.css';
 import { ThemeContext } from '../../Context/ThemeContext';
 import search_icon from '../../assets/search_icon.png';
-import sampleData from '../../data/data.js'// Importujte sampleData iz data.js
+import sampleData from '../../data/data.js'; // Import sampleData iz data.js
 import Preporuka from '../../Components/Preporuka/Preporuka';
 
 const Pretraga = () => {
@@ -11,6 +11,7 @@ const Pretraga = () => {
   const [sortOption, setSortOption] = useState('none');
   const { theme } = useContext(ThemeContext);
 
+  // Funkcija za sortiranje rezultata
   const sortResults = (data) => {
     switch (sortOption) {
       case 'recommendations-asc':
@@ -34,6 +35,7 @@ const Pretraga = () => {
     }
   };
 
+  // Učitavanje sačuvanih rezultata iz localStorage
   useEffect(() => {
     const savedResults = localStorage.getItem('searchResults');
     if (savedResults) {
@@ -41,6 +43,7 @@ const Pretraga = () => {
     }
   }, []);
 
+  // Filtriranje i sortiranje rezultata na osnovu unetih ključnih reči i opcija sortiranja
   useEffect(() => {
     if (query.trim() === '') {
       setResults([]);
@@ -102,6 +105,7 @@ const Pretraga = () => {
 };
 
 export default Pretraga;
+
 
 
 
