@@ -30,8 +30,31 @@
   .search-results li {
     padding: 10px;
     border-bottom: 1px solid #ccc;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    align-items: center;
   }
-  
+  .service-container{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+  }
+  .service img{
+    width: min(300px,70%);
+  }
+  .preporuci button{
+    background-color: #df678c;
+    border: 1px solid white;
+    padding: 10px 25px;
+    cursor: pointer;
+    font-size: 20px;
+    color: white;
+    margin-right: 20px;
+  }
+  .service h3{
+    padding-bottom: 15px;
+    font-size: 24px;
+  }
   .search-results p {
     font-style: italic;
   }
@@ -49,7 +72,6 @@
     margin-inline: auto;
   }
   .search-results p{
-    text-align: center;
     padding-top: 15px;
   }
   .search-img{
@@ -72,9 +94,47 @@
   .sort-options select {
     padding: 0.5rem;
     font-size: 1rem;
+    padding-top: 10px;
   }
+
   /* Stilizujte select polje */
-  
+  @media(max-width:1056px){
+    .search-results li {
+      grid-template-columns: 1.5fr 1fr;
+    }
+  }
+  @media(max-width:911px){
+    .search-results li {
+      grid-template-columns: 1fr;
+    }
+    .preporuci{
+      margin-block: 20px;
+    }
+  }
+  @media(max-width:780px){
+    .preporuci button{
+    padding: 8px 20px;
+    font-size: 18px;
+    }
+    .service-container{
+      grid-template-columns: 1.5fr 1fr;
+    }
+  }
+  @media(max-width:603px){
+    .preporuci button{
+    padding: 8px 18px;
+    font-size: 17px;
+    }
+    .service-container{
+      grid-template-columns: 1fr;
+    }
+    .service,.service-spec,.preporuci{
+      text-align: center;
+    }
+    .preporuci button:last-child{
+      margin-right: 0;
+    }
+  }
   @media(max-width:538px){
     .pretraga{
         padding:  80px 30px 20px 30px;
@@ -117,6 +177,17 @@
             margin-left: 12px;
           }
     }
+    @media(max-width:427px){
+      .preporuci button{
+        padding: 6px 15px;
+        font-size: 14px;
+        }
+    }
+    @media(max-width:410px){
+      .service h3{
+        font-size: 18px;
+      }
+    }
     @media(max-width:400px){
         .pretraga-opis{
             font-size: 18px;
@@ -147,6 +218,10 @@
             width: 70%;
             margin-left: 10px;
           }
+          .preporuci button{
+            padding: 5px 13px;
+            font-size: 12px;
+            }
     }
     @media(max-width:310px){
         .search-bar {

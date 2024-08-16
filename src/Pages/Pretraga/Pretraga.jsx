@@ -74,10 +74,20 @@ const Pretraga = () => {
           <ul>
             {results.map((item) => (
               <li key={item.id}>
+                <div className="service-container">
+                <div className="service">
                 <h3 className='item-title'>{item.title}</h3>
+                <img src={item.image} alt="" />
+                </div>
+                <div className="service-spec">
                 <p><strong>Autor:</strong> {item.author}</p>
                 <p><strong>Cena:</strong> {item.price}</p>
                 <p><strong>Broj preporuka:</strong> {item.recommendations}</p>
+                </div>
+                </div>
+                <div className="preporuci">
+                  <button>Pogledaj</button><button>Preporuci</button>
+                </div>
               </li>
             ))}
           </ul>
