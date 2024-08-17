@@ -7,6 +7,7 @@ import Footer from './Components/Footer/Footer';
 import Pretraga from './Pages/Pretraga/Pretraga';
 import Home from './Pages/Home/Home';
 import PreporukaDetalj from './Pages/PreporukaDetalj/PreporukaDetalj';
+import Profil from './Pages/Profil/Profil';
 
 const App = () => {
   return (
@@ -18,6 +19,7 @@ const App = () => {
           <Route path="/" element={<Home />} />
             <Route path="/pretraga" element={<Pretraga />} />
             <Route path="/preporuka/:id" element={<PreporukaDetalj/>} />
+            <Route path="/profil" element={<Profil/>} />
           </Routes>
           <Footer />
         </ThemeProvider>

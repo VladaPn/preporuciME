@@ -1,0 +1,39 @@
+.profil{
+    padding: 100px 80px;
+}
+.profil-container{
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    align-items: center;
+    gap: 50px;
+}
+.profil-basic-info img{
+    width: 90%;
+    display: block;
+    max-width: 400px;
+    margin-bottom: 50px;
+}
+.profil-title img{
+    width: 64px;
+}
+.profil-title{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 70px;
+}
+.profil-title h2{
+    font-size: 40px;
+}
+.profil-inputi{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 30px;
+    margin-bottom: 50px;
+}
+.profil-inputi input{
+    width: min(400px, 90%);
+    font-size: 18px;
+    padding: 5px;
+}
