@@ -42,7 +42,7 @@
 .profilna-slika-preview img{
     display: block;
     margin-inline: auto;
-    max-width: 80%;
+    max-width: 200px;
 }
 .izmeni-profil-form input{
     margin-top: 12px;
