@@ -4,7 +4,7 @@ const ProfilData = {
     ime: 'Marijana',
     prezime: 'Stojanović',
     email: 'makisto89@gmail.com',
-    premium: false,
+    premium: true,
     trajanje: 20,
     img: profile_pic,
     preporuke: [

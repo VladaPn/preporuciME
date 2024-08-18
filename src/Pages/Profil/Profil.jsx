@@ -4,6 +4,7 @@ import ProfilData from './ProfilData';
 import { ThemeContext } from '../../Context/ThemeContext';
 import { Link } from 'react-router-dom';
 import profile_icon from '../../assets/profile_icon.png';
+import premium_icon from '../../assets/premium_icon.png'
 
 const Profil = () => {
   const { theme } = useContext(ThemeContext);
@@ -44,7 +45,10 @@ const Profil = () => {
             <button type='submit'>Izmeni profil</button>
             </form>
           </div>
-          {ProfilData.premium && <div>Premium je</div>}
+          {ProfilData.premium && <div className='premium-img'><img src={premium_icon} alt="" />Premium nalog </div>}
+          {ProfilData.premium && (
+              <div className='premium-tekst'>Premium nalog je aktivan još {ProfilData.trajanje} dana</div>
+            )}
           <div className="profile-additional-bottom">
         <button>Logout</button>
         <button>Izbriši profil</button>
@@ -53,10 +57,6 @@ const Profil = () => {
 
         <div className="profile-additional">
           <div className="profile-additional-top">
-            {ProfilData.premium && (
-              <div>Premium nalog je aktivan još {ProfilData.trajanje} dana</div>
-            )}
-
             <div className="najnovije-preporuke">
             <div className={`box-rounded ${theme?'box-dark':''}`}></div>
               <h2>Preporuke</h2>

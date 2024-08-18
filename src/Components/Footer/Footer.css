@@ -100,6 +100,9 @@
     .footer h3{
         font-size: 24px;
     }
+    .footer{
+        padding: 40px 40px 0 40px;
+    }
 }
 @media (max-width: 331px) {
     .copyright{
