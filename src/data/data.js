@@ -226,6 +226,51 @@ const sampleData = [
     image: photo,
     desc: 'Sara Stojanović pruža usluge osnivanja startup kompanija, uključujući pravne, finansijske i strategijske savete. Ako planirate da pokrenete novi biznis, Sara vam može pomoći da postavite temelje za uspeh i navigujete kroz izazove pokretanja startupa.'
   }
+  ,{
+    id: 26,
+    title: 'Profesionalno čišćenje',
+    author: 'Branko Matić',
+    price: '800 RSD',
+    recommendations: 5,
+    image: photo,
+    desc: 'Branko Matić pruža usluge profesionalnog čišćenja za vaš dom ili kancelariju. Usluge uključuju dubinsko čišćenje, pranje prozora, i održavanje enterijera, garantujući čisto i sveže okruženje.'
+  },
+  {
+    id: 27,
+    title: 'Učenje matematike',
+    author: 'Aleksej Stojković',
+    price: '1400 RSD',
+    recommendations: 12,
+    image: photo,
+    desc: 'Aleksej Stojković nudi privatne časove matematike za osnovce i srednjoškolce. Njegov pristup učenja pomaže učenicima da bolje razumeju matematičke koncepte i pripreme se za ispite.'
+  },
+  {
+    id: 28,
+    title: 'Popravka računara',
+    author: 'Andrej Milošević',
+    price: '2000 RSD',
+    recommendations: 24,
+    image: photo,
+    desc: 'Andrej Milošević je stručnjak za popravku računara. Bilo da vam treba dijagnostika problema, zamena komponenti ili reinstalacija softvera, Andrej pruža brzu i pouzdanu uslugu.'
+  },
+  {
+    id: 29,
+    title: 'Kurs šivenja',
+    author: 'Aca Petrović',
+    price: '1000 RSD',
+    recommendations: 8,
+    image: photo,
+    desc: 'Aca Petrović vodi kurs šivenja za sve nivoe. Naučite kako da krojite, šijete i popravljate odeću uz stručnu pomoć i praktične savete.'
+  },
+  {
+    id: 30,
+    title: 'Privatni časovi engleskog',
+    author: 'Marko Stanković',
+    price: '20000 RSD',
+    recommendations: 11,
+    image: photo,
+    desc: 'Marko Stanković nudi privatne časove engleskog jezika za sve uzraste. Pomoću personalizovanih lekcija, učenici mogu poboljšati svoje jezičke veštine i pripremiti se za testove kao što su TOEFL ili IELTS.'
+  }
 ];
 
 export default sampleData;
