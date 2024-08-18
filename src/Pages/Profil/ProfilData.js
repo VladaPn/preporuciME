@@ -21,6 +21,7 @@ const ProfilData = {
         { id: 3, naslov: 'Prodaja polovnih knjiga', tekst: 'Knjige različitih žanrova u odličnom stanju.' },
     ],
     oglasi_remain: 4,
+    lozinka: 'ad2kfs'
 };
 
 export default ProfilData;

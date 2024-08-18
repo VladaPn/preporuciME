@@ -1,17 +1,27 @@
 import './Profil.css';
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import ProfilData from './ProfilData';
 import { ThemeContext } from '../../Context/ThemeContext';
 import { Link } from 'react-router-dom';
 import profile_icon from '../../assets/profile_icon.png';
-import premium_icon from '../../assets/premium_icon.png'
+import premium_icon from '../../assets/premium_icon.png';
 
 const Profil = () => {
   const { theme } = useContext(ThemeContext);
 
-  const [ime, setIme] = useState(ProfilData.ime);
-  const [prezime, setPrezime] = useState(ProfilData.prezime);
-  const [email, setEmail] = useState(ProfilData.email);
+  // Učitavanje podataka iz localStorage ili default vrednosti
+  const [ime, setIme] = useState(localStorage.getItem('ime') || ProfilData.ime);
+  const [prezime, setPrezime] = useState(localStorage.getItem('prezime') || ProfilData.prezime);
+  const [email, setEmail] = useState(localStorage.getItem('email') || ProfilData.email);
+  const [profilnaSlika, setProfilnaSlika] = useState(localStorage.getItem('img') || ProfilData.img);
+
+  useEffect(() => {
+    // Ažuriranje slike ako je promenjena
+    const novaSlika = localStorage.getItem('img');
+    if (novaSlika) {
+      setProfilnaSlika(novaSlika);
+    }
+  }, []);
 
   return (
     <div className={`profil ${theme ? 'theme-dark' : 'theme-light'}`}>
@@ -21,44 +31,53 @@ const Profil = () => {
       </div>
       <div className="profil-container">
         <div className="profil-basic-info">
-          <img src={ProfilData.img} alt="Profilna Slika" />
+          <img src={profilnaSlika} alt="Profilna Slika" />
           <div className="profil-inputi">
-            <form >
-            <input
-              type="text"
-              className="profile-name"
-              value={ime}
-              onChange={(e) => setIme(e.target.value)}
-            />
-            <input
-              type="text"
-              className="profile-surname"
-              value={prezime}
-              onChange={(e) => setPrezime(e.target.value)}
-            />
-            <input
-              type="text"
-              className="profile-username"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
-            <button type='submit'>Izmeni profil</button>
+            <form>
+              <input
+                type="text"
+                className="profile-name"
+                value={ime}
+                onChange={(e) => setIme(e.target.value)}
+                disabled
+              />
+              <input
+                type="text"
+                className="profile-surname"
+                value={prezime}
+                onChange={(e) => setPrezime(e.target.value)}
+                disabled
+              />
+              <input
+                type="text"
+                className="profile-username"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                disabled
+              />
+              <button id="izmeni-prof" type="button">
+                <Link to="/izmeniprofil">Izmeni profil</Link>
+              </button>
             </form>
           </div>
-          {ProfilData.premium && <div className='premium-img'><img src={premium_icon} alt="" />Premium nalog </div>}
           {ProfilData.premium && (
-              <div className='premium-tekst'>Premium nalog je aktivan još {ProfilData.trajanje} dana</div>
-            )}
+            <div className="premium-img">
+              <img src={premium_icon} alt="Premium Ikona" />Premium nalog
+            </div>
+          )}
+          {ProfilData.premium && (
+            <div className="premium-tekst">Premium nalog je aktivan još {ProfilData.trajanje} dana</div>
+          )}
           <div className="profile-additional-bottom">
-        <button>Logout</button>
-        <button>Izbriši profil</button>
-      </div>
+            <button>Logout</button>
+            <button>Izbriši profil</button>
+          </div>
         </div>
 
         <div className="profile-additional">
           <div className="profile-additional-top">
             <div className="najnovije-preporuke">
-            <div className={`box-rounded ${theme?'box-dark':''}`}></div>
+              <div className={`box-rounded ${theme ? 'box-dark' : ''}`}></div>
               <h2>Preporuke</h2>
               {ProfilData.preporuke.length > 0 ? (
                 <ul>
@@ -81,7 +100,7 @@ const Profil = () => {
             </div>
 
             <div className="najnoviji-oglasi">
-            <div className={`box-rounded ${theme?'box-dark':''}`}></div>
+              <div className={`box-rounded ${theme ? 'box-dark' : ''}`}></div>
               <h2>Oglasi</h2>
               {ProfilData.oglasi.length > 0 ? (
                 <ul>
@@ -105,12 +124,12 @@ const Profil = () => {
           </div>
         </div>
       </div>
-      
     </div>
   );
 };
 
 export default Profil;
+
 
 
 

@@ -8,6 +8,8 @@ import Pretraga from './Pages/Pretraga/Pretraga';
 import Home from './Pages/Home/Home';
 import PreporukaDetalj from './Pages/PreporukaDetalj/PreporukaDetalj';
 import Profil from './Pages/Profil/Profil';
+import IzmeniProfil from './Pages/IzmeniProfil/IzmeniProfil';
+
 
 const App = () => {
   return (
@@ -20,6 +22,7 @@ const App = () => {
             <Route path="/pretraga" element={<Pretraga />} />
             <Route path="/preporuka/:id" element={<PreporukaDetalj/>} />
             <Route path="/profil" element={<Profil/>} />
+            <Route path="/izmeniprofil" element={<IzmeniProfil/>} />
           </Routes>
           <Footer />
         </ThemeProvider>

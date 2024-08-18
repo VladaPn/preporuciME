@@ -23,12 +23,17 @@ const PreporukaDetalj = () => {
     }
   }, [id, preporuka]);
 
+  // Skrolovanje na vrh stranice pri učitavanju komponente
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const handlePreporuku = () => {
     const newPreporuke = preporuceno ? preporuke - 1 : preporuke + 1;
     setPreporuke(newPreporuke);
     setPreporuceno(!preporuceno);
 
-    // Update localStorage or your data source
+    // Ažuriraj localStorage ili izvor podataka
     const updatedData = sampleData.map(dataItem => 
       dataItem.id === preporuka.id ? { ...dataItem, recommendations: newPreporuke } : dataItem
     );
@@ -64,6 +69,7 @@ const PreporukaDetalj = () => {
 };
 
 export default PreporukaDetalj;
+
 
 
 

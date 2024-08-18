@@ -1,0 +1,109 @@
+.izmeni-profil-container{
+    padding: 100px 80px;
+}
+.izmeni-profil-container h2{
+    font-size: 40px;
+}
+.izmeni-profil-title img{
+    width: 64px;
+}
+.izmeni-profil-title{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 70px;
+}
+.forma-top{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    row-gap: 30px;
+}
+.izmeni-profil-form input{
+    width: min(400px, 90%);
+    font-size: 18px;
+    padding: 5px;
+}
+.buttons-container{
+    display: flex;
+    gap: 20px;
+}
+.buttons-container button{
+    background-color: #df678c;
+    border: 1px solid white;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+    color: white;
+    margin-top: 15px;
+}
+.poruka{
+    margin-top: 20px;
+}
+.profilna-slika-preview img{
+    display: block;
+    margin-inline: auto;
+    max-width: 80%;
+}
+.izmeni-profil-form input{
+    margin-top: 12px;
+}
+
+@media(max-width:600px){
+    .forma-top{
+        display: grid;
+        grid-template-columns: 1fr;
+        row-gap: 30px;
+    }
+    .izmeni-profil-form{
+        text-align: center;
+    }
+}
+@media(max-width:500px){
+    .buttons-container{
+        display: flex;
+        gap: 20px;
+        flex-direction: column;
+        align-items: center;
+    }
+    .buttons-container button{
+        width: 150px;
+    }
+    #slika-change{
+        font-size: 16px;
+    }
+}
+@media(max-width:480px){
+    .izmeni-profil-container h2{
+        font-size: 34px;
+    }
+    .izmeni-profil-form input{
+        font-size: 16px;
+        padding: 3px;
+    }
+}
+@media(max-width:444px){
+    .izmeni-profil-container h2{
+        font-size: 31px;
+    }
+}
+@media(max-width:400px){
+    .izmeni-profil-container{
+        padding: 80px 60px;
+    }
+    .izmeni-profil-container h2{
+        font-size: 30px;
+    }
+}
+@media(max-width:354px){
+    .izmeni-profil-container{
+        padding: 70px 50px;
+    }
+    #slika-change{
+        font-size: 14px;
+    }
+}
+@media(max-width:306px){
+    #slika-change{
+        font-size: 13px;
+    }
+}

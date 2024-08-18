@@ -120,6 +120,11 @@
     font-weight: 700;
     font-size: 22px;
 }
+#izmeni-prof a{
+    color: inherit;
+    text-decoration: none;
+    font-size: inherit;
+}
 @media(max-width:1085px){
     .profile-additional-top{
         gap: 10px;
