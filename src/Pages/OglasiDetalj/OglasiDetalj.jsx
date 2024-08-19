@@ -12,33 +12,51 @@ const OglasDetalj = () => {
   const { theme } = useContext(ThemeContext);
 
   const [showMessageForm, setShowMessageForm] = useState(false);
+  const [messageSent, setMessageSent] = useState(false); // Praćenje da li je poruka poslata
+  const [messageText, setMessageText] = useState(''); // Stanje za tekst poruke
 
   const handleSendMessageClick = () => {
     setShowMessageForm(!showMessageForm);
+    setMessageSent(false); // Resetuj stanje kada se otvori ili zatvori forma
+  };
+
+  const handleFormSubmit = (e) => {
+    e.preventDefault();
+    // Ovdje možete dodati logiku za slanje poruke
+    setMessageSent(true); // Postavi stanje na true kada se poruka pošalje
+    setMessageText(''); // Očisti tekst poruke
+    setShowMessageForm(false); // Sakrij formu nakon slanja
   };
 
   return (
     <div className={`oglasi-detalj ${theme ? 'theme-dark' : 'theme-light'}`}>
       {oglas ? (
         <div className='oglas-container'>
-            <div className="oglas-detalji">
-          <div className="oglas-detalj-slika">
-            <img src={oglas.img} alt="" />
+          <div className="oglas-detalji">
+            <div className="oglas-detalj-slika">
+              <img src={oglas.img} alt="" />
+            </div>
+            <h1>{oglas.naslov}</h1>
+            <p>{oglas.tekst}</p>
+
+            <button onClick={handleSendMessageClick} className="send-message-button">
+              {showMessageForm ? 'Zatvori formu' : 'Pošalji poruku'}
+            </button>
+
+            {showMessageForm && (
+              <form className="message-form" onSubmit={handleFormSubmit}>
+                <textarea 
+                  placeholder="Napišite svoju poruku ovde..." 
+                  rows="4" 
+                  value={messageText} 
+                  onChange={(e) => setMessageText(e.target.value)} 
+                />
+                <button type="submit">Pošalji</button>
+              </form>
+            )}
+
+            {messageSent && <p className="success-message">Poruka je poslata!</p>}
           </div>
-          <h1>{oglas.naslov}</h1>
-          <p>{oglas.tekst}</p>
-
-          <button onClick={handleSendMessageClick} className="send-message-button">
-            {showMessageForm ? 'Zatvori formu' : 'Pošalji poruku'}
-          </button>
-
-          {showMessageForm && (
-            <form className="message-form">
-              <textarea placeholder="Napišite svoju poruku ovde..." rows="4" />
-              <button type="submit">Pošalji</button>
-            </form>
-          )}
-</div>
           <div className="oglas-gallery">
             <Carousel>
               <div>
@@ -70,5 +88,6 @@ const OglasDetalj = () => {
 };
 
 export default OglasDetalj;
+
 
 
