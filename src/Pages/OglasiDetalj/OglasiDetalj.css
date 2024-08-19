@@ -104,10 +104,10 @@
         margin-inline: auto;
     }
     .oglas-container{
-        margin-left: -10px;
+        margin-left: -5px;
     }
     .oglas-gallery{
-        margin-left: -10px;
+        margin-left: -5px;
     }
     .oglasi-detalj {
         padding: 100px 10px;
@@ -150,6 +150,14 @@
     }
     .oglas-gallery img {
         max-width: 220px;
+    }
+}
+@media(max-width:290px){
+    .oglas-container{
+        margin-left: -10px;
+    }
+    .oglas-gallery{
+        margin-left: -10px;
     }
 }
 
