@@ -68,6 +68,9 @@
     .footer-contact, .follow-us{
         font-size: 15px;
     }
+    .footer{
+        padding: 40px 40px 0 40px;
+    }
 }
 @media(max-width:585px){
     .slika-logo{
@@ -87,7 +90,7 @@
 }
 @media(max-width:512px){
     .footer{
-        padding: 80px 40px 0 40px;
+        padding: 40px 40px 0 40px;
     }
 }
 @media(max-width:443px){
@@ -100,9 +103,7 @@
     .footer h3{
         font-size: 24px;
     }
-    .footer{
-        padding: 40px 40px 0 40px;
-    }
+
 }
 @media (max-width: 331px) {
     .copyright{

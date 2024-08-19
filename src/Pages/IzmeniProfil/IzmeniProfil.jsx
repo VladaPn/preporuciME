@@ -6,7 +6,6 @@ import edit_icon from '../../assets/edit_icon.png';
 const IzmeniProfil = () => {
   const { theme } = useContext(ThemeContext);
 
-  // Preuzimanje podataka iz localStorage ili korišćenje podrazumevanih vrednosti
   const [ime, setIme] = useState(localStorage.getItem('ime') || '');
   const [prezime, setPrezime] = useState(localStorage.getItem('prezime') || '');
   const [email, setEmail] = useState(localStorage.getItem('email') || '');
@@ -14,15 +13,26 @@ const IzmeniProfil = () => {
   const [novaLozinka, setNovaLozinka] = useState('');
   const [profilnaSlika, setProfilnaSlika] = useState(localStorage.getItem('img') || '');
   const [poruka, setPoruka] = useState('');
+  const [porukaTip, setPorukaTip] = useState(''); // Dodato za praćenje tipa poruke
 
-  // Funkcija za rukovanje učitavanjem slike
+  const validateEmail = (email) => {
+    const atIndex = email.indexOf('@');
+    return atIndex > 2 && email.length > 3 && atIndex !== email.length - 1;
+  };
+
+  const validatePassword = (password) => {
+    const hasUpperCase = /[A-Z]/.test(password);
+    const hasNumber = /\d/.test(password);
+    return password.length >= 5 && hasUpperCase && hasNumber;
+  };
+
   const handleFileChange = (e) => {
     const file = e.target.files[0];
     const reader = new FileReader();
 
     reader.onloadend = () => {
       setProfilnaSlika(reader.result);
-      localStorage.setItem('img', reader.result);  // Čuvanje slike pod ključem 'img'
+      localStorage.setItem('img', reader.result);
     };
 
     if (file) {
@@ -30,33 +40,42 @@ const IzmeniProfil = () => {
     }
   };
 
-  // Funkcija za ažuriranje podataka i čuvanje u localStorage
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    if (!validateEmail(email)) {
+      setPoruka('Unesite ispravan email koji ima bar 3 karaktera pre @ znaka.');
+      setPorukaTip('greska'); // Postavljanje tipa poruke na grešku
+      return;
+    }
+
+    if (novaLozinka && !validatePassword(novaLozinka)) {
+      setPoruka('Lozinka mora imati bar 5 karaktera, jedno veliko slovo i jedan broj.');
+      setPorukaTip('greska');
+      return;
+    }
 
     localStorage.setItem('ime', ime);
     localStorage.setItem('prezime', prezime);
     localStorage.setItem('email', email);
 
-    // Provera stare lozinke samo ako je nova lozinka uneta
     if (novaLozinka) {
       if (staraLozinka === localStorage.getItem('lozinka')) {
         localStorage.setItem('lozinka', novaLozinka);
       } else {
         setPoruka('Stara lozinka nije tačna!');
+        setPorukaTip('greska');
         return;
       }
     }
 
-    // Prikazivanje poruke o uspešnom čuvanju
     setPoruka('Izmene su sačuvane.');
+    setPorukaTip('uspesno'); // Postavljanje tipa poruke na uspeh
   };
 
-  // Funkcija za brisanje naloga
   const handleDeleteAccount = () => {
     if (window.confirm('Da li ste sigurni da želite da obrišete svoj nalog?')) {
-      localStorage.clear(); // Briše sve podatke iz localStorage-a
-      // Preusmeravanje na početnu stranicu nakon brisanja
+      localStorage.clear();
       navigate('/');
     }
   };
@@ -99,7 +118,7 @@ const IzmeniProfil = () => {
               type="password"
               value={staraLozinka}
               onChange={(e) => setStaraLozinka(e.target.value)}
-              disabled={!novaLozinka} // Polje za staru lozinku je onemogućeno ako nova lozinka nije uneta
+              disabled={!novaLozinka}
             />
           </label>
           <label>
@@ -110,12 +129,14 @@ const IzmeniProfil = () => {
               onChange={(e) => setNovaLozinka(e.target.value)}
             />
           </label>
+        </div>
+        <div className="upload-slike">
           <label className='postoji'>
             Profilna slika: <br />
             <input id='slika-change' type="file" accept="image/*" onChange={handleFileChange} placeholder='Izaberi sliku' />
           </label>
           {profilnaSlika && (
-            <div className="profilna-slika-preview">
+            <div className={`profilna-slika-preview ${theme ? 'profilna-slika-dark' : ''}`}>
               <img src={profilnaSlika} alt="Profilna slika" />
             </div>
           )}
@@ -126,13 +147,15 @@ const IzmeniProfil = () => {
             Obriši nalog
           </button>
         </div>
-        {poruka && <p className="poruka">{poruka}</p>}
+        {poruka && <p className={`poruka ${porukaTip}`}>{poruka}</p>}
       </form>
     </div>
   );
 };
 
 export default IzmeniProfil;
+
+
 
 
 
