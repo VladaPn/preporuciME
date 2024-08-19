@@ -1,0 +1,163 @@
+.oglasi-detalj {
+    padding: 100px 80px;
+}
+
+.oglas-detalj-slika img {
+    max-width: 100%;
+}
+
+.oglas-detalj-slika {
+    margin-bottom: 30px;
+}
+
+.oglasi-detalj img {
+    width: min(500px, 90%);
+    display: block;
+    height: auto;
+}
+
+.send-message-button {
+    background-color: #df678c;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.send-message-button:hover {
+    background-color: #c94c6b;
+}
+
+.message-form {
+    margin-top: 20px;
+}
+
+.message-form textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.message-form button {
+    background-color: #df678c;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.message-form button:hover {
+    background-color: #c94c6b;
+}
+
+.oglas-gallery {
+    margin-top: 20px;
+    max-width: 600px; /* Podesi maksimalnu širinu galerije */
+    margin: 0 auto; /* Centriraj galeriju */
+}
+
+.oglas-gallery h2 {
+    margin-bottom: 10px;
+}
+
+.oglas-gallery img {
+    width: 100%;
+    max-width: 600px; /* Postavi maksimalnu širinu slike u galeriji */
+    height: auto; /* Održi odnos stranica slika */
+    margin: 0 auto;
+}
+
+.oglas-container {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    align-items: center;
+    gap: 90px;
+}
+
+.oglas-detalji p {
+    padding-right: 5%;
+}
+
+@media(max-width: 950px) {
+    .oglas-container {
+        grid-template-columns: 1fr;
+        align-items: center;
+    }
+    .oglas-detalj-slika img {
+        margin-inline: auto;
+    }
+    .oglas-detalji {
+        padding-inline: 5%;
+    }
+    .oglas-detalji p {
+        padding-right: 0%;
+    }
+}
+
+@media(max-width: 450px) {
+    .oglas-gallery {
+        padding: 0 20px; /* Dodaj unutrašnji razmak za manje ekrane */
+    }
+    .oglas-gallery img {
+        max-width: 300px; /* Smanji maksimalnu širinu slika za manje ekrane */
+    }
+    .oglasi-detalj {
+        padding: 100px 30px;
+    }
+}
+
+@media(max-width: 375px) {
+    .oglas-gallery img {
+        max-width: 240px; /* Smanji maksimalnu širinu slika za manje ekrane */
+    }
+    .oglas-gallery {
+        width: 80%;
+        padding: 0;
+    }
+}
+
+@media(max-width: 336px) {
+    .oglas-gallery img {
+        max-width: 200px; /* Smanji maksimalnu širinu slika za manje ekrane */
+    }
+    .oglas-gallery {
+        width: 80%;
+        padding: 0;
+    }
+    .carousel .control-dots {
+        width: 50% !important;
+        left: 25%;
+    }
+    .oglasi-detalj {
+        padding: 100px 20px;
+    }
+    .oglas-gallery {
+        margin-left: 10px;
+    }
+}
+
+@media(max-width: 330px) {
+    .oglas-detalj-slika img,
+    .oglasi-detalj img {
+        max-width: 100%; /* Osiguraj da slike ne prelaze širinu ekrana */
+    }
+    .send-message-button,
+    .message-form button {
+        padding: 8px 16px; /* Smanji padding dugmadi za manje ekrane */
+    }
+    .message-form textarea {
+        font-size: 14px; /* Smanji veličinu fonta u textarea */
+    }
+    .oglas-container {
+        gap: 20px; /* Smanji razmak između elemenata u gridu */
+    }
+    .carousel .control-dots {
+        width: 40% !important;
+        left: 30%;
+    }
+}
+
+

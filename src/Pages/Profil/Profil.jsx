@@ -106,7 +106,7 @@ const Profil = () => {
                 <ul>
                   {ProfilData.oglasi.map((oglas) => (
                     <li key={oglas.id}>
-                      <Link to={`/preporuka/${oglas.id}`}>
+                      <Link to={`/oglasi/${oglas.id}`}>
                         <h3>{oglas.naslov}</h3>
                         <p>{oglas.tekst}</p>
                       </Link>
@@ -129,6 +129,7 @@ const Profil = () => {
 };
 
 export default Profil;
+
 
 
 
