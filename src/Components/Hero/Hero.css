@@ -53,12 +53,32 @@
     color: white;
     margin-right: 20px;
 }
+.prijava-login{
+    background-color: #df678c;
+    border: 1px solid white;
+    cursor: pointer;
+    color: white;
+    margin-right: 20px;
+}
 .left-hero p span{
     font-size: 30px;
     display: block;
     margin-top: 20px;
 }
 .novi{display: none;}
+.prijava a{
+    text-decoration: none;
+    font-size: inherit;
+    color: inherit;
+}
+.prijava-login a{
+    text-decoration: none;
+    font-size: inherit;
+    color: inherit;
+    display: inline-block;
+    padding: 10px 25px;
+    font-size: 20px;
+}
 @media(max-width:1550px){
     .left-hero h2{
         font-size:40px;
@@ -142,7 +162,7 @@
 @media(max-width:538px){
     .left-hero h2{
         font-size:20px;
-        padding-left: 65px;
+        padding-left: 90px;
     }
     .left-hero p{
         margin-top: 40px;
@@ -158,10 +178,10 @@
 @media(max-width:462px){
     .left-hero h2{
         font-size:20px;
-        padding-left: 45px;
+        padding-left: 55px;
     }
     .box-rounded{
-        width: 40px;
+        width: 45px !important;
     }
     .left-hero .prijava{
         padding: 8px 20px;

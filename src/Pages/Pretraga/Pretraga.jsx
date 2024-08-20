@@ -100,11 +100,27 @@ const Pretraga = () => {
           <p>{query.trim() === '' ? 'Unesite ključne reči za pretragu.' : 'Nema rezultata za vašu pretragu.'}</p>
         )}
       </div>
+
+      {/* Dodaj baner pre futera */}
+      <div className="banner-container">
+  <div className="scroll-banner">
+    <div className={`banner-item ${theme?'banner-item-dark':''}`}>najbolje</div>
+    <div className={`banner-item ${theme?'banner-item-dark':''}`}>najpovoljnije</div>
+    <div className={`banner-item ${theme?'banner-item-dark':''}`}>najbrže</div>
+    <div className={`banner-item preporuka-item ${theme?'banner-item-dark preporuka-dark-item':''}`}>PreporuciME</div>
+    <div className={`banner-item ${theme?'banner-item-dark':''}`}>najbolje</div>
+    <div className={`banner-item ${theme?'banner-item-dark':''}`}>najpovoljnije</div>
+    <div className={`banner-item ${theme?'banner-item-dark':''}`}>najbrže</div>
+    <div className={`banner-item preporuka-item ${theme?'banner-item-dark preporuka-dark-item':''}`}>PreporuciME</div>
+  </div>
+</div>
+
     </div>
   );
 };
 
 export default Pretraga;
+
 
 
 

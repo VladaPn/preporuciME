@@ -1,0 +1,128 @@
+/* Globalni stilovi */
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    height: 100%;
+}
+
+/* Kontejner za login stranicu */
+.login-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 80vh;
+    overflow: hidden;
+}
+
+/* Stil za formu */
+.login-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Stil za naslov forme */
+.login-form h1 {
+    color: #df678c; /* Ružičasta boja za naslov */
+    margin-bottom: 20px;
+}
+
+/* Stil za input grupe */
+.input-group {
+    margin-bottom: 15px;
+    width: 100%;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #3d155f;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+/* Stil za dugme */
+.button {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    color: #fff;
+    background-color: #df678c;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.button:hover {
+    background-color: #c94c6b;
+}
+
+/* Stil za dugme za prijavu putem Google naloga */
+.google-login {
+    background-color: #4285F4; /* Google plava boja */
+    margin-top: 10px;
+}
+
+.google-login:hover {
+    background-color: #357ae8;
+}
+
+/* Stil za link ka registraciji */
+.register-link {
+    margin-top: 20px;
+    font-size: 14px;
+}
+
+.register-link a {
+    color: #df678c;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.register-link a:hover {
+    text-decoration: underline;
+}
+
+/* Stil za deo sa slikom ili gradientom */
+.image-section {
+    background: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Ako želite da dodate sliku, koristite klasu image */
+.image-section .image {
+    width: 100%;
+    height: 100%;
+    background: url('path-to-your-image.jpg') no-repeat center center;
+    background-size: cover;
+}
+
+
+/* Za mobilne uređaje */
+@media (max-width: 768px) {
+    .login-container {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto 1fr;
+    }
+    
+    .image-section img{
+        max-width: 100%; /* Sakrij sliku ili gradient na manjim ekranima */
+    }
+    
+    .login-form {
+        grid-row: 2;
+    }
+}

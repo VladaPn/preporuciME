@@ -30,7 +30,7 @@ const Navbar = () => {
           <li><Link to='/profil' onClick={handleCloseMenu}>Profil</Link></li>
           <li><Link to='/premium' onClick={handleCloseMenu}>Premium</Link></li>
         </ul>
-        <button className='login'>Login</button>
+        <Link to='/login' onClick={handleCloseMenu}><button className='login'>Login</button></Link>
         <a href="" className="korisnik"><img src={user} alt="" /></a>
         <button 
           onClick={() => setTheme(prevCheck => !prevCheck)}
@@ -57,7 +57,7 @@ const Navbar = () => {
           <li><Link to='/profil' onClick={handleCloseMenu}>Profil</Link></li>
           <li><Link to='/premium' onClick={handleCloseMenu}>Premium</Link></li>
           <a href="" className="korisnik"><img src={user} alt="" /></a>
-          <button onClick={handleCloseMenu}>Login</button>
+          <button onClick={handleCloseMenu}><Link to='/login' onClick={handleCloseMenu}>Login</Link></button>
         </ul>
       </div>
     </div>

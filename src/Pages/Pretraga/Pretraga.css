@@ -84,6 +84,46 @@
     padding-top: 10px;
   }
 
+  .banner-container {
+    position: relative;
+    overflow: hidden;
+    background-color: transparent; /* Tamna pozadina u skladu sa temom */
+    color: #fff;
+    margin-top: 70px;
+  }
+  
+  .scroll-banner {
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+    animation: scroll-text 15s linear infinite;
+  }
+  
+  .banner-item {
+    font-size: 50px;
+    padding: 40px 15px;
+    font-weight: 800;
+    color: white; /* Svetla boja teksta */
+  }
+  .banner-item-dark{
+    color: #df678c;
+  }
+  .preporuka-item{
+    color: #df678c;
+  }
+  .preporuka-dark-item{
+    color: #3d155f;
+  }
+  
+  @keyframes scroll-text {
+    0% {
+      transform: translateX(100%);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
+  }
+  
   /* Stilizujte select polje */
   @media(max-width:1240px){
     .preporuci button{
@@ -111,6 +151,9 @@
     }
     .service-container{
       grid-template-columns: 1.5fr 1fr;
+    }
+    .scroll-banner {
+      animation: scroll-text 10s linear infinite;
     }
   }
   @media(max-width:603px){
@@ -146,6 +189,12 @@
         font-size: 24px;
         padding-left: min(5%,10px);
       }
+      .scroll-banner {
+        animation: scroll-text 8s linear infinite;
+      }
+      .banner-container{
+        margin-top: 30px;
+      }
     }
     .search-results ul{
         margin-top: 20px;
@@ -177,6 +226,9 @@
       .service h3{
         font-size: 18px;
       }
+      .scroll-banner {
+        animation: scroll-text 5s linear infinite;
+      }
     }
     @media(max-width:400px){
         .pretraga-opis{
@@ -201,6 +253,9 @@
           .search-bar button {
             padding: 5px 12px;
             font-size: 15px;
+          }
+          .banner-item {
+            font-size: 40px;
           }
     }
     @media(max-width:350px){
