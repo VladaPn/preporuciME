@@ -2,8 +2,8 @@ import profile_pic from '../../assets/profile_pic.png';
 import oglas_detalj_img from '../../assets/oglas_detalj_img.jpg';
 
 const ProfilData = {
-    ime: 'Marijana',
-    prezime: 'Stojanović',
+    ime: '',
+    prezime: '',
     email: 'makisto89@gmail.com',
     premium: true,
     trajanje: 20,

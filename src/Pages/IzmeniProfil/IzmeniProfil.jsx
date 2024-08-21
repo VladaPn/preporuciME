@@ -1,19 +1,34 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import './IzmeniProfil.css';
 import { ThemeContext } from '../../Context/ThemeContext';
 import edit_icon from '../../assets/edit_icon.png';
+import { useNavigate } from 'react-router-dom';
+import { auth } from '../../firebase';
 
 const IzmeniProfil = () => {
   const { theme } = useContext(ThemeContext);
+  const navigate = useNavigate();
 
-  const [ime, setIme] = useState(localStorage.getItem('ime') || '');
-  const [prezime, setPrezime] = useState(localStorage.getItem('prezime') || '');
-  const [email, setEmail] = useState(localStorage.getItem('email') || '');
+  // Polja za ime, prezime, staru lozinku i novu lozinku su inicijalno prazna
+  const [ime, setIme] = useState('');
+  const [prezime, setPrezime] = useState('');
+  const [email, setEmail] = useState(localStorage.getItem('email') || ''); // Polje za email inicijalizovano sa vrednošću iz localStorage
   const [staraLozinka, setStaraLozinka] = useState('');
   const [novaLozinka, setNovaLozinka] = useState('');
   const [profilnaSlika, setProfilnaSlika] = useState(localStorage.getItem('img') || '');
   const [poruka, setPoruka] = useState('');
-  const [porukaTip, setPorukaTip] = useState(''); // Dodato za praćenje tipa poruke
+  const [porukaTip, setPorukaTip] = useState(''); // Tip poruke
+
+  // Učitaj ime i prezime iz localStorage kada se komponenta učita
+ 
+  useEffect(() => {
+    const user = auth.currentUser;
+    if (user) {
+      setEmail(user.email);
+      setIme(localStorage.getItem('ime') || '');
+      setPrezime(localStorage.getItem('prezime') || '');
+    }
+  }, []);
 
   const validateEmail = (email) => {
     const atIndex = email.indexOf('@');
@@ -94,6 +109,7 @@ const IzmeniProfil = () => {
               type="text"
               value={ime}
               onChange={(e) => setIme(e.target.value)}
+              placeholder="Ime"
             />
           </label>
           <label>
@@ -102,6 +118,7 @@ const IzmeniProfil = () => {
               type="text"
               value={prezime}
               onChange={(e) => setPrezime(e.target.value)}
+              placeholder="Prezime"
             />
           </label>
           <label>
@@ -110,6 +127,7 @@ const IzmeniProfil = () => {
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
+              placeholder="Email"
             />
           </label>
           <label>
@@ -118,7 +136,7 @@ const IzmeniProfil = () => {
               type="password"
               value={staraLozinka}
               onChange={(e) => setStaraLozinka(e.target.value)}
-              disabled={!novaLozinka}
+              placeholder="Stara lozinka"
             />
           </label>
           <label>
@@ -127,6 +145,7 @@ const IzmeniProfil = () => {
               type="password"
               value={novaLozinka}
               onChange={(e) => setNovaLozinka(e.target.value)}
+              placeholder="Nova lozinka"
             />
           </label>
         </div>
@@ -154,6 +173,7 @@ const IzmeniProfil = () => {
 };
 
 export default IzmeniProfil;
+
 
 
 

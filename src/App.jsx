@@ -11,6 +11,7 @@ import Profil from './Pages/Profil/Profil';
 import IzmeniProfil from './Pages/IzmeniProfil/IzmeniProfil';
 import OglasiDetalj from './Pages/OglasiDetalj/OglasiDetalj';
 import Login from './Pages/Login/Login';
+import Register from './Pages/Register/Register';
 
 
 const App = () => {
@@ -27,6 +28,7 @@ const App = () => {
             <Route path="/izmeniprofil" element={<IzmeniProfil/>} />
             <Route path="/oglasi/:id" element={<OglasiDetalj/>} />
             <Route path="/login" element={<Login/>} />
+            <Route path="/register" element={<Register/>} />
           </Routes>
           <Footer />
         </ThemeProvider>

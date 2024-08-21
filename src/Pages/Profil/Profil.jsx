@@ -1,27 +1,40 @@
-import './Profil.css';
 import React, { useContext, useState, useEffect } from 'react';
+import './Profil.css';
 import ProfilData from './ProfilData';
 import { ThemeContext } from '../../Context/ThemeContext';
 import { Link } from 'react-router-dom';
 import profile_icon from '../../assets/profile_icon.png';
 import premium_icon from '../../assets/premium_icon.png';
+import { auth } from '../../firebase';
 
 const Profil = () => {
   const { theme } = useContext(ThemeContext);
 
-  // Učitavanje podataka iz localStorage ili default vrednosti
-  const [ime, setIme] = useState(localStorage.getItem('ime') || ProfilData.ime);
-  const [prezime, setPrezime] = useState(localStorage.getItem('prezime') || ProfilData.prezime);
-  const [email, setEmail] = useState(localStorage.getItem('email') || ProfilData.email);
+  const [ime, setIme] = useState('');
+  const [prezime, setPrezime] = useState('');
+  const [email, setEmail] = useState('');
   const [profilnaSlika, setProfilnaSlika] = useState(localStorage.getItem('img') || ProfilData.img);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   useEffect(() => {
-    // Ažuriranje slike ako je promenjena
-    const novaSlika = localStorage.getItem('img');
-    if (novaSlika) {
-      setProfilnaSlika(novaSlika);
+    const user = auth.currentUser;
+    if (user) {
+      setEmail(user.email);
+      setIme(localStorage.getItem('ime') || '');
+      setPrezime(localStorage.getItem('prezime') || '');
+      setIsLoggedIn(true);
+    } else {
+      setIsLoggedIn(false);
     }
   }, []);
+
+  const handleLogout = () => {
+    auth.signOut().then(() => {
+      setIsLoggedIn(false);
+    }).catch((error) => {
+      console.error("Error during logout:", error);
+    });
+  };
 
   return (
     <div className={`profil ${theme ? 'theme-dark' : 'theme-light'}`}>
@@ -39,20 +52,21 @@ const Profil = () => {
                 className="profile-name"
                 value={ime}
                 onChange={(e) => setIme(e.target.value)}
-                disabled
+                placeholder="Ime"
               />
               <input
                 type="text"
                 className="profile-surname"
                 value={prezime}
                 onChange={(e) => setPrezime(e.target.value)}
-                disabled
+                placeholder="Prezime"
               />
               <input
                 type="text"
                 className="profile-username"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
+                placeholder="Email"
                 disabled
               />
               <button id="izmeni-prof" type="button">
@@ -60,17 +74,23 @@ const Profil = () => {
               </button>
             </form>
           </div>
-          {ProfilData.premium && (
-            <div className="premium-img">
-              <img src={premium_icon} alt="Premium Ikona" />Premium nalog
-            </div>
-          )}
-          {ProfilData.premium && (
-            <div className="premium-tekst">Premium nalog je aktivan još {ProfilData.trajanje} dana</div>
+          {isLoggedIn && ProfilData.premium && (
+            <>
+              <div className="premium-img">
+                <img src={premium_icon} alt="Premium Ikona" /> Premium nalog
+              </div>
+              <div className="premium-tekst">
+                Premium nalog je aktivan još {ProfilData.trajanje} dana
+              </div>
+            </>
           )}
           <div className="profile-additional-bottom">
-            <button>Logout</button>
-            <button>Izbriši profil</button>
+            {isLoggedIn && (
+              <>
+                <button onClick={handleLogout}>Logout</button>
+                <button>Izbriši profil</button>
+              </>
+            )}
           </div>
         </div>
 
@@ -129,6 +149,14 @@ const Profil = () => {
 };
 
 export default Profil;
+
+
+
+
+
+
+
+
 
 
 
