@@ -104,4 +104,16 @@
       padding: 15px;
     }
   }
-  
+  @media(max-width:500px){
+    .register-container form {
+      max-width: 80%;
+    }
+  }
+  @media(max-width:380px){
+    .register-container form {
+      max-width: 90%;
+      padding: 0;
+      border-radius: 0;
+    box-shadow: none;
+    }
+  }

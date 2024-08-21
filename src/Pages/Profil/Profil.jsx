@@ -30,6 +30,12 @@ const Profil = () => {
     }
   }, [navigate]);
 
+  useEffect(() => {
+    if (isLoggedIn) {
+      window.scrollTo(0, 0); // Skrolovanje na vrh stranice kada se komponenta učita i korisnik je ulogovan
+    }
+  }, [isLoggedIn]);
+
   const handleLogout = () => {
     auth.signOut().then(() => {
       setIsLoggedIn(false);
@@ -152,6 +158,7 @@ const Profil = () => {
 };
 
 export default Profil;
+
 
 
 

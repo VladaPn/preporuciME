@@ -133,7 +133,9 @@
     }
     .login-form {
         grid-row: 2;
+        padding-block: 50px;
     }
+    
 }
 /* Za mobilne uređaje */
 @media (max-width: 768px) {
@@ -141,11 +143,21 @@
     .image-section img{
         max-width: 100%; /* Sakrij sliku ili gradient na manjim ekranima */
     }
-    
+    .login-container {
+        min-height: 100vh;
+    }
 
 }
 @media(max-width:500px){
     .google-login{
         display: none;
+    }
+    .login-form{
+        padding-block: 70px;
+    }
+}
+@media(max-width:450px){
+    .login-container {
+        min-height: 90vh;
     }
 }

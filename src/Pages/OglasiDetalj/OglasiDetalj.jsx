@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import ProfilData from '../Profil/ProfilData';
 import './OglasiDetalj.css';
@@ -14,6 +14,11 @@ const OglasDetalj = () => {
   const [showMessageForm, setShowMessageForm] = useState(false);
   const [messageSent, setMessageSent] = useState(false); // Praćenje da li je poruka poslata
   const [messageText, setMessageText] = useState(''); // Stanje za tekst poruke
+
+  // Skrolovanje na vrh stranice kada se komponenta učita
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   const handleSendMessageClick = () => {
     setShowMessageForm(!showMessageForm);
@@ -88,6 +93,7 @@ const OglasDetalj = () => {
 };
 
 export default OglasDetalj;
+
 
 
 
