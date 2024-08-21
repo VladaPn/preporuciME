@@ -144,3 +144,8 @@
     
 
 }
+@media(max-width:500px){
+    .google-login{
+        display: none;
+    }
+}

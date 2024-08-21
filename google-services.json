@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "948512968158",
+    "project_id": "preporucime-b587d",
+    "storage_bucket": "preporucime-b587d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:948512968158:android:806820230c3d1ff5bc614f",
+        "android_client_info": {
+          "package_name": "preporuci.Me"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "948512968158-d6s87ceerpq7ako9n3ssqma0tlu8mdfi.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDbTTKkJMui14tobX33ErPrRvjgjQgmW4A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "948512968158-d6s87ceerpq7ako9n3ssqma0tlu8mdfi.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
