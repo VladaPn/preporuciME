@@ -2,13 +2,14 @@ import React, { useContext, useState, useEffect } from 'react';
 import './Profil.css';
 import ProfilData from './ProfilData';
 import { ThemeContext } from '../../Context/ThemeContext';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import profile_icon from '../../assets/profile_icon.png';
 import premium_icon from '../../assets/premium_icon.png';
 import { auth } from '../../firebase';
 
 const Profil = () => {
   const { theme } = useContext(ThemeContext);
+  const navigate = useNavigate();
 
   const [ime, setIme] = useState('');
   const [prezime, setPrezime] = useState('');
@@ -25,12 +26,14 @@ const Profil = () => {
       setIsLoggedIn(true);
     } else {
       setIsLoggedIn(false);
+      navigate('/login'); // Preusmeravanje na stranicu za prijavu ako korisnik nije ulogovan
     }
-  }, []);
+  }, [navigate]);
 
   const handleLogout = () => {
     auth.signOut().then(() => {
       setIsLoggedIn(false);
+      navigate('/login'); // Preusmeravanje nakon odjave
     }).catch((error) => {
       console.error("Error during logout:", error);
     });
@@ -149,6 +152,7 @@ const Profil = () => {
 };
 
 export default Profil;
+
 
 
 

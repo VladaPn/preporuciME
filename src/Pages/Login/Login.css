@@ -117,20 +117,30 @@
     background: url('path-to-your-image.jpg') no-repeat center center;
     background-size: cover;
 }
-
-
-/* Za mobilne uređaje */
-@media (max-width: 768px) {
+.google-login{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+.google-login img{
+    max-width: 20px;
+}
+@media(max-width:885px){
     .login-container {
         grid-template-columns: 1fr;
         grid-template-rows: auto 1fr;
     }
+    .login-form {
+        grid-row: 2;
+    }
+}
+/* Za mobilne uređaje */
+@media (max-width: 768px) {
     
     .image-section img{
         max-width: 100%; /* Sakrij sliku ili gradient na manjim ekranima */
     }
     
-    .login-form {
-        grid-row: 2;
-    }
+
 }

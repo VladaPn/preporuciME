@@ -116,6 +116,10 @@
     font-size: 20px;
 
   }
+  .nije-log{
+    text-align: center;
+    font-size: 32px;
+  }
   @media(max-width:960px){
     .izmeni-profil-container{
         padding-bottom: 0;

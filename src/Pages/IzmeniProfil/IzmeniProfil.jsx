@@ -4,30 +4,35 @@ import { ThemeContext } from '../../Context/ThemeContext';
 import edit_icon from '../../assets/edit_icon.png';
 import { useNavigate } from 'react-router-dom';
 import { auth } from '../../firebase';
+import lock_img from '../../assets/lock.png'
 
 const IzmeniProfil = () => {
   const { theme } = useContext(ThemeContext);
   const navigate = useNavigate();
 
-  // Polja za ime, prezime, staru lozinku i novu lozinku su inicijalno prazna
   const [ime, setIme] = useState('');
   const [prezime, setPrezime] = useState('');
-  const [email, setEmail] = useState(localStorage.getItem('email') || ''); // Polje za email inicijalizovano sa vrednošću iz localStorage
+  const [email, setEmail] = useState(localStorage.getItem('email') || '');
   const [staraLozinka, setStaraLozinka] = useState('');
   const [novaLozinka, setNovaLozinka] = useState('');
   const [profilnaSlika, setProfilnaSlika] = useState(localStorage.getItem('img') || '');
   const [poruka, setPoruka] = useState('');
-  const [porukaTip, setPorukaTip] = useState(''); // Tip poruke
+  const [porukaTip, setPorukaTip] = useState('');
+  const [isLoggedIn, setIsLoggedIn] = useState(true); // Pratimo da li je korisnik ulogovan
 
-  // Učitaj ime i prezime iz localStorage kada se komponenta učita
- 
   useEffect(() => {
-    const user = auth.currentUser;
-    if (user) {
-      setEmail(user.email);
-      setIme(localStorage.getItem('ime') || '');
-      setPrezime(localStorage.getItem('prezime') || '');
-    }
+    const unsubscribe = auth.onAuthStateChanged((user) => {
+      if (user) {
+        setEmail(user.email);
+        setIme(localStorage.getItem('ime') || '');
+        setPrezime(localStorage.getItem('prezime') || '');
+        setIsLoggedIn(true);
+      } else {
+        setIsLoggedIn(false);
+      }
+    });
+
+    return () => unsubscribe(); // Otkaži pretplatu na promene kada komponenta bude demontirana
   }, []);
 
   const validateEmail = (email) => {
@@ -60,7 +65,7 @@ const IzmeniProfil = () => {
 
     if (!validateEmail(email)) {
       setPoruka('Unesite ispravan email koji ima bar 3 karaktera pre @ znaka.');
-      setPorukaTip('greska'); // Postavljanje tipa poruke na grešku
+      setPorukaTip('greska');
       return;
     }
 
@@ -85,7 +90,7 @@ const IzmeniProfil = () => {
     }
 
     setPoruka('Izmene su sačuvane.');
-    setPorukaTip('uspesno'); // Postavljanje tipa poruke na uspeh
+    setPorukaTip('uspesno');
   };
 
   const handleDeleteAccount = () => {
@@ -94,6 +99,12 @@ const IzmeniProfil = () => {
       navigate('/');
     }
   };
+
+  if (!isLoggedIn) {
+    return <div className={`izmeni-profil-container nije-log ${theme ? 'theme-dark' : 'theme-light'}`}>
+      <img src={lock_img} alt="" />
+      <p>Da biste izmenili profil, molimo vas da se prijavite.</p></div>;
+  }
 
   return (
     <div className={`izmeni-profil-container ${theme ? 'theme-dark' : 'theme-light'}`}>
@@ -150,9 +161,15 @@ const IzmeniProfil = () => {
           </label>
         </div>
         <div className="upload-slike">
-          <label className='postoji'>
+          <label className="postoji">
             Profilna slika: <br />
-            <input id='slika-change' type="file" accept="image/*" onChange={handleFileChange} placeholder='Izaberi sliku' />
+            <input
+              id="slika-change"
+              type="file"
+              accept="image/*"
+              onChange={handleFileChange}
+              placeholder="Izaberi sliku"
+            />
           </label>
           {profilnaSlika && (
             <div className={`profilna-slika-preview ${theme ? 'profilna-slika-dark' : ''}`}>
@@ -162,7 +179,11 @@ const IzmeniProfil = () => {
         </div>
         <div className="buttons-container">
           <button type="submit">Sačuvaj izmene</button>
-          <button type="button" onClick={handleDeleteAccount} className="delete-button">
+          <button
+            type="button"
+            onClick={handleDeleteAccount}
+            className="delete-button"
+          >
             Obriši nalog
           </button>
         </div>
@@ -173,6 +194,8 @@ const IzmeniProfil = () => {
 };
 
 export default IzmeniProfil;
+
+
 
 
 

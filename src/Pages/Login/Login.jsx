@@ -5,6 +5,7 @@ import forma_gif from '../../assets/forma.gif';
 import { signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup, onAuthStateChanged } from 'firebase/auth';
 import { auth } from '../../firebase';
 import { Link, useNavigate } from 'react-router-dom';
+import google from '../../assets/google.png'
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -12,18 +13,18 @@ const Login = () => {
   const { theme } = useContext(ThemeContext);
   const navigate = useNavigate();
 
+  // Funkcija za prijavu putem emaila i lozinke
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const userCredential = await signInWithEmailAndPassword(auth, email, password);
-      //const user = userCredential.user;
-
+      await signInWithEmailAndPassword(auth, email, password);
       navigate('/profil'); // Preusmeravanje na profil nakon prijave
     } catch (error) {
       console.error('Greška pri prijavi:', error.message);
     }
   };
 
+  // Funkcija za prijavu putem Google naloga
   const handleGoogleLogin = async () => {
     const provider = new GoogleAuthProvider();
     try {
@@ -36,6 +37,7 @@ const Login = () => {
     }
   };
 
+  // Provera da li je korisnik već prijavljen
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
@@ -77,6 +79,7 @@ const Login = () => {
         </form>
         <div className="social-login">
           <button type="button" className="button google-login" onClick={handleGoogleLogin}>
+            <img src={google} alt="" />
             Prijavi se putem Google naloga
           </button>
         </div>
@@ -92,6 +95,7 @@ const Login = () => {
 };
 
 export default Login;
+
 
 
 
