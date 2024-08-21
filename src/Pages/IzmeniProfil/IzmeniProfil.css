@@ -25,6 +25,7 @@
     width: min(400px, 90%);
     font-size: 18px;
     padding: 5px;
+    outline: none;
 }
 .upload-slike input{
     width: min(200px, 90%);

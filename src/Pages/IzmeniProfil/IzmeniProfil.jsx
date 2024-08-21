@@ -4,7 +4,8 @@ import { ThemeContext } from '../../Context/ThemeContext';
 import edit_icon from '../../assets/edit_icon.png';
 import { useNavigate } from 'react-router-dom';
 import { auth } from '../../firebase';
-import lock_img from '../../assets/lock.png'
+import lock_img from '../../assets/lock.png';
+import Prijava from '../../Components/Prijava/Prijava';
 
 const IzmeniProfil = () => {
   const { theme } = useContext(ThemeContext);
@@ -100,16 +101,25 @@ const IzmeniProfil = () => {
     }
   };
 
+  const handleLogout = () => {
+    auth.signOut().then(() => {
+      setIsLoggedIn(false);
+      navigate('/prijava'); // Preusmeri korisnika na početnu stranicu nakon odjave
+    }).catch((error) => {
+      console.error("Greška pri odjavi:", error);
+    });
+  };
+
   if (!isLoggedIn) {
-    return <div className={`izmeni-profil-container nije-log ${theme ? 'theme-dark' : 'theme-light'}`}>
-      <img src={lock_img} alt="" />
-      <p>Da biste izmenili profil, molimo vas da se prijavite.</p></div>;
+    return (
+      <Prijava/>
+    );
   }
 
   return (
     <div className={`izmeni-profil-container ${theme ? 'theme-dark' : 'theme-light'}`}>
       <div className="izmeni-profil-title">
-        <img src={edit_icon} alt="" />
+        <img src={edit_icon} alt="Edit" />
         <h2>Izmeni Profil</h2>
       </div>
       <form onSubmit={handleSubmit} className="izmeni-profil-form">
@@ -186,6 +196,13 @@ const IzmeniProfil = () => {
           >
             Obriši nalog
           </button>
+          <button
+            type="button"
+            onClick={handleLogout}
+            className="logout-button"
+          >
+            Odjavi se
+          </button>
         </div>
         {poruka && <p className={`poruka ${porukaTip}`}>{poruka}</p>}
       </form>
@@ -194,6 +211,7 @@ const IzmeniProfil = () => {
 };
 
 export default IzmeniProfil;
+
 
 
 

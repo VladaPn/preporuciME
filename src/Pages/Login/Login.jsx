@@ -42,9 +42,7 @@ const Login = () => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
         navigate('/profil'); // Preusmeravanje na profil ako je korisnik već prijavljen
-      } else {
-        console.log('Nema prijavljenog korisnika');
-      }
+      } 
     });
 
     return () => unsubscribe();

@@ -1,0 +1,15 @@
+.prijava img{
+    width: min(300px,110%);
+}
+.prijava{
+    padding-bottom: 80px;
+}
+@media(max-width:400px){
+    .prijava img{
+        display: block;
+        margin-bottom: 40px;
+    }
+    .prijava{
+        font-size: 30px;
+    }
+}

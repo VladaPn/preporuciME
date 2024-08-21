@@ -14,7 +14,7 @@
     color: var(--text-color);
   }
   
-  h1 {
+  .register-container h1 {
     font-size: 2.5rem;
     margin-bottom: 40px;
   }
@@ -26,7 +26,7 @@
     text-align: center;
   }
   
-  form {
+  .register-container form {
     width: 100%;
     max-width: 400px;
     background: var(--form-background);
@@ -37,18 +37,18 @@
   .white-shadow form{
     box-shadow: 2px 5px 10px rgba(255, 255, 255, 0.2);
   }
-  .input-group {
+  .register-container .input-group {
     margin-bottom: 20px;
   }
   
-  .label {
+  .register-container .label {
     font-size: 1.1rem;
     margin-bottom: 5px;
     display: block;
   }
   
-  input[type="email"],
-  input[type="password"] {
+  .register-container input[type="email"],
+  .register-container input[type="password"] {
     width: 100%;
     padding: 10px;
     font-size: 18px;
@@ -58,8 +58,8 @@
     transition: border-color 0.3s;
   }
   
-  input[type="email"]:focus,
-  input[type="password"]:focus {
+  .register-container input[type="email"]:focus,
+  .register-container input[type="password"]:focus {
     border-color: var(--primary-color);
     outline: none;
   }
@@ -73,7 +73,7 @@
   .register-top img{
     width: min(200px, 80%);
   }
-  .button {
+  .register-container .button {
     width: 100%;
     padding: 10px;
     border: none;
@@ -87,7 +87,7 @@
     padding-block: 15px;
   }
   
-  .button:hover {
+  .register-container .button:hover {
     background-color: #c94c6b;
   }
   
