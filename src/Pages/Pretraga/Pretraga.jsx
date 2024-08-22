@@ -4,10 +4,12 @@ import { ThemeContext } from '../../Context/ThemeContext';
 import search_icon from '../../assets/search_icon.png';
 import sampleData from '../../data/data.js'; // Import sampleData iz data.js
 import Preporuka from '../../Components/Preporuka/Preporuka';
+import { Link } from 'react-scroll';
 
 const Pretraga = () => {
   const [query, setQuery] = useState('');
   const [results, setResults] = useState([]);
+  const [visibleResults, setVisibleResults] = useState(5); // Početno prikazujemo 5 rezultata
   const [sortOption, setSortOption] = useState('none');
   const { theme } = useContext(ThemeContext);
 
@@ -58,6 +60,11 @@ const Pretraga = () => {
     }
   }, [query, sortOption]);
 
+  // Funkcija za prikazivanje više rezultata
+  const handleShowMoreResults = () => {
+    setVisibleResults((prevVisibleResults) => prevVisibleResults + 5);
+  };
+
   return (
     <div className={`pretraga ${theme ? 'theme-dark' : 'theme-light'}`}>
       <h2>Tražite nešto specifično?</h2>
@@ -91,11 +98,18 @@ const Pretraga = () => {
       
       <div className="search-results">
         {results.length > 0 ? (
-          <ul>
-            {results.map((item) => (
-              <Preporuka key={item.id} item={item} />
-            ))}
-          </ul>
+          <>
+            <ul>
+              {results.slice(0, visibleResults).map((item) => (
+                <Preporuka key={item.id} item={item} />
+              ))}
+            </ul>
+            {visibleResults < results.length && (
+              <Link className="prikazi-vise" onClick={handleShowMoreResults}>
+                Prikaži više
+              </Link>
+            )}
+          </>
         ) : (
           <p>{query.trim() === '' ? 'Unesite ključne reči za pretragu.' : 'Nema rezultata za vašu pretragu.'}</p>
         )}
@@ -103,17 +117,17 @@ const Pretraga = () => {
 
       {/* Dodaj baner pre futera */}
       <div className="banner-container">
-  <div className="scroll-banner">
-    <div className={`banner-item ${theme?'banner-item-dark':''}`}>najbolje</div>
-    <div className={`banner-item ${theme?'banner-item-dark':''}`}>najpovoljnije</div>
-    <div className={`banner-item ${theme?'banner-item-dark':''}`}>najbrže</div>
-    <div className={`banner-item preporuka-item ${theme?'banner-item-dark preporuka-dark-item':''}`}>PreporuciME</div>
-    <div className={`banner-item ${theme?'banner-item-dark':''}`}>najbolje</div>
-    <div className={`banner-item ${theme?'banner-item-dark':''}`}>najpovoljnije</div>
-    <div className={`banner-item ${theme?'banner-item-dark':''}`}>najbrže</div>
-    <div className={`banner-item preporuka-item ${theme?'banner-item-dark preporuka-dark-item':''}`}>PreporuciME</div>
-  </div>
-</div>
+        <div className="scroll-banner">
+          <div className={`banner-item ${theme ? 'banner-item-dark' : ''}`}>najbolje</div>
+          <div className={`banner-item ${theme ? 'banner-item-dark' : ''}`}>najpovoljnije</div>
+          <div className={`banner-item ${theme ? 'banner-item-dark' : ''}`}>najbrže</div>
+          <div className={`banner-item preporuka-item ${theme ? 'banner-item-dark preporuka-dark-item' : ''}`}>PreporuciME</div>
+          <div className={`banner-item ${theme ? 'banner-item-dark' : ''}`}>najbolje</div>
+          <div className={`banner-item ${theme ? 'banner-item-dark' : ''}`}>najpovoljnije</div>
+          <div className={`banner-item ${theme ? 'banner-item-dark' : ''}`}>najbrže</div>
+          <div className={`banner-item preporuka-item ${theme ? 'banner-item-dark preporuka-dark-item' : ''}`}>PreporuciME</div>
+        </div>
+      </div>
 
     </div>
   );

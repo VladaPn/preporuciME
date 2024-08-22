@@ -17,6 +17,9 @@ const Profil = () => {
   const [profilnaSlika, setProfilnaSlika] = useState(localStorage.getItem('img') || ProfilData.img);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
+  const [visibleRecs, setVisibleRecs] = useState(3);
+  const [visibleAds, setVisibleAds] = useState(3);
+
   useEffect(() => {
     const user = auth.currentUser;
     if (user) {
@@ -45,6 +48,22 @@ const Profil = () => {
     });
   };
 
+  const handleShowMoreRecs = () => {
+    setVisibleRecs((prevVisibleRecs) => prevVisibleRecs + 3);
+  };
+
+  const handleShowLessRecs = () => {
+    setVisibleRecs(3);
+  };
+
+  const handleShowMoreAds = () => {
+    setVisibleAds((prevVisibleAds) => prevVisibleAds + 3);
+  };
+
+  const handleShowLessAds = () => {
+    setVisibleAds(3);
+  };
+
   return (
     <div className={`profil ${theme ? 'theme-dark' : 'theme-light'}`}>
       <div className="profil-title">
@@ -53,6 +72,7 @@ const Profil = () => {
       </div>
       <div className="profil-container">
         <div className="profil-basic-info">
+          <div className="p-1">
           <img src={profilnaSlika} alt="Profilna Slika" />
           <div className="profil-inputi">
             <form>
@@ -83,6 +103,8 @@ const Profil = () => {
               </button>
             </form>
           </div>
+          </div>
+          <div className="p-2">
           {isLoggedIn && ProfilData.premium && (
             <>
               <div className="premium-img">
@@ -101,8 +123,9 @@ const Profil = () => {
               </>
             )}
           </div>
+          </div>
         </div>
-
+   
         <div className="profile-additional">
           <div className="profile-additional-top">
             <div className="najnovije-preporuke">
@@ -110,7 +133,7 @@ const Profil = () => {
               <h2>Preporuke</h2>
               {ProfilData.preporuke.length > 0 ? (
                 <ul>
-                  {ProfilData.preporuke.map((preporuka) => (
+                  {ProfilData.preporuke.slice(0, visibleRecs).map((preporuka) => (
                     <li key={preporuka.id}>
                       <Link to={`/preporuka/${preporuka.id}`}>
                         <h3>{preporuka.naslov}</h3>
@@ -121,6 +144,15 @@ const Profil = () => {
                 </ul>
               ) : (
                 <p>Nemate preporuke.</p>
+              )}
+              {visibleRecs < ProfilData.preporuke.length ? (
+                <Link id='prikaz' className="prikazi-vise" onClick={handleShowMoreRecs}>
+                  Prikaži više
+                </Link>
+              ) : (
+                <Link id='prikaz' className="prikazi-manje" onClick={handleShowLessRecs}>
+                  Prikaži manje
+                </Link>
               )}
               <p className={`preostale-preporuke ${theme ? 'dark-preostale' : ''}`}>
                 Preostalo besplatnih preporuka ovog meseca: {ProfilData.preporuke_remain}
@@ -133,7 +165,7 @@ const Profil = () => {
               <h2>Oglasi</h2>
               {ProfilData.oglasi.length > 0 ? (
                 <ul>
-                  {ProfilData.oglasi.map((oglas) => (
+                  {ProfilData.oglasi.slice(0, visibleAds).map((oglas) => (
                     <li key={oglas.id}>
                       <Link to={`/oglasi/${oglas.id}`}>
                         <h3>{oglas.naslov}</h3>
@@ -144,6 +176,15 @@ const Profil = () => {
                 </ul>
               ) : (
                 <p>Nemate oglase.</p>
+              )}
+              {visibleAds < ProfilData.oglasi.length ? (
+                <Link id='prikaz' className="prikazi-vise" onClick={handleShowMoreAds}>
+                  Prikaži više
+                </Link>
+              ) : (
+                <Link id='prikaz2' className="prikazi-manje" onClick={handleShowLessAds}>
+                  Prikaži manje
+                </Link>
               )}
               <p className={`preostali-oglasi ${theme ? 'dark-preostale' : ''}`}>
                 Preostalo besplatnih oglasa ovog meseca: {ProfilData.oglasi_remain}
@@ -158,6 +199,9 @@ const Profil = () => {
 };
 
 export default Profil;
+
+
+
 
 
 

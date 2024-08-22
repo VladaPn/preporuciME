@@ -202,7 +202,14 @@
     .search-results ul li{
         margin-bottom: 10px;
     }
-
+    .prikazi-vise, .prikazi-manje{
+      display: block;
+      margin-inline: auto;
+      margin-block: 20px;
+      font-size: 28px;
+      color: #df678c;
+      text-align: center;
+  }
     @media(max-width:512px){
         .pretraga-opis{
             font-size: 20px;
