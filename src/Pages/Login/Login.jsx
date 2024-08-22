@@ -6,69 +6,65 @@ import { signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup, onAuth
 import { auth } from '../../firebase';
 import { Link, useNavigate } from 'react-router-dom';
 import google from '../../assets/google.png';
+import { FaEye, FaEyeSlash } from 'react-icons/fa'; // Dodajte ove linije za ikone oka
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [error, setError] = useState(''); // Stanje za greške
-  const [showResetPassword, setShowResetPassword] = useState(false); // Stanje za prikazivanje opcije za resetovanje lozinke
+  const [showPassword, setShowPassword] = useState(false); // Dodano stanje za prikaz lozinke
+  const [error, setError] = useState('');
+  const [showResetPassword, setShowResetPassword] = useState(false);
   const { theme } = useContext(ThemeContext);
   const navigate = useNavigate();
 
-  // Funkcija za prijavu putem emaila i lozinke
   const handleLogin = async (e) => {
     e.preventDefault();
-    setError(''); // Resetovanje grešaka pre svake prijave
+    setError('');
     try {
       await signInWithEmailAndPassword(auth, email, password);
-      navigate('/profil'); // Preusmeravanje na profil nakon prijave
+      navigate('/profil');
     } catch (error) {
-      
       if (error.code === 'auth/user-not-found') {
-        setError('Nalog sa ovim email-om ne postoji.'); // Postavljanje greške za nepostojeći nalog
+        setError('Nalog sa ovim email-om ne postoji.');
       } else if (error.code === 'auth/wrong-password') {
-        setError('Pogrešna lozinka.'); // Greška za pogrešnu lozinku
-        setShowResetPassword(true); // Prikazivanje opcije za resetovanje lozinke
+        setError('Pogrešna lozinka.');
+        setShowResetPassword(true);
       } else if (error.code === 'auth/invalid-email') {
-        setError('Nevažeća email adresa.'); // Greška za nevažeću email adresu
+        setError('Nevažeća email adresa.');
       } else if (error.code === 'auth/invalid-credential') {
-        setError('Nevažeći kredencijali.'); // Greška za nevažeće kredencijale
+        setError('Nevažeći kredencijali.');
       } else {
-        setError('Greška pri prijavi. Molimo pokušajte ponovo.'); // Opšta greška
+        setError('Greška pri prijavi. Molimo pokušajte ponovo.');
       }
-    }
-};
-
-
-  // Funkcija za resetovanje lozinke
-  const handlePasswordReset = async () => {
-    try {
-      await sendPasswordResetEmail(auth, email);
-      setError('Email za resetovanje lozinke je poslat.'); // Poruka o uspehu
-      setShowResetPassword(false); // Sakrivanje opcije za resetovanje lozinke
-    } catch (error) {
-      setError('Greška pri slanju email-a za resetovanje lozinke.'); // Greška pri slanju email-a
     }
   };
 
-  // Funkcija za prijavu putem Google naloga
+  const handlePasswordReset = async () => {
+    try {
+      await sendPasswordResetEmail(auth, email);
+      setError('Email za resetovanje lozinke je poslat.');
+      setShowResetPassword(false);
+    } catch (error) {
+      setError('Greška pri slanju email-a za resetovanje lozinke.');
+    }
+  };
+
   const handleGoogleLogin = async () => {
     const provider = new GoogleAuthProvider();
     try {
       const result = await signInWithPopup(auth, provider);
       const user = result.user;
       console.log('Prijavljen putem Google-a:', user);
-      navigate('/profil'); // Preusmeravanje na profil nakon prijave putem Google-a
+      navigate('/profil');
     } catch (error) {
       console.error('Greška pri prijavi putem Google-a:', error.message);
     }
   };
 
-  // Provera da li je korisnik već prijavljen
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
-        navigate('/profil'); // Preusmeravanje na profil ako je korisnik već prijavljen
+        navigate('/profil');
       } 
     });
 
@@ -79,7 +75,7 @@ const Login = () => {
     <div className={`login-container ${theme ? 'theme-dark' : ''}`}>
       <div className="login-form">
         <h1>Prijavite se</h1>
-        {error && <p className="error-message">{error}</p>} {/* Prikaz greške */}
+        {error && <p className="error-message">{error}</p>}
         <form onSubmit={handleLogin}>
           <div className="input-group">
             <label htmlFor="email">Email:</label>
@@ -91,15 +87,22 @@ const Login = () => {
               required
             />
           </div>
-          <div className="input-group">
+          <div className="input-group password-group">
             <label htmlFor="password">Lozinka:</label>
             <input
-              type="password"
+              type={showPassword ? 'text' : 'password'} // Menjajte tip inputa na osnovu stanja
               id="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
             />
+            <button
+              type="button"
+              className="toggle-password-visibility"
+              onClick={() => setShowPassword(!showPassword)}
+            >
+              {showPassword ? <FaEyeSlash /> : <FaEye />} {/* Ikone za prikazivanje i skrivanje lozinke */}
+            </button>
           </div>
           <button type="submit" className="button">Prijavi se</button>
         </form>
@@ -127,6 +130,7 @@ const Login = () => {
 };
 
 export default Login;
+
 
 
 

@@ -2,14 +2,14 @@
     padding: 100px 80px;
 }
 .dodaj-oglas-container form{
-    width: min(800px,100%);
+    width: min(900px,100%);
     margin-inline: auto;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 .dodaj-oglas-container form input, .dodaj-oglas-container form textarea{
-    width: min(400px, 90%);
+    width: min(600px, 90%);
     font-size: 18px;
     padding: 10px;
     outline: none;
@@ -41,25 +41,83 @@
     background-color: #c94c6b;
 }
 .upload-section{
-    width: min(400px, 90%);
+    width: min(600px, 90%);
     margin-top: 20px;
     font-size: 18px;
 }
 .upload-section input{
     width: 100% !important;
 }
+.dodaj-oglas-top h2{
+    font-size: 30px;
+}
+
+  .upload-section label {
+    display: block;
+    margin-bottom: 8px;
+  }
+  
+  .upload-section input[type="file"] {
+    display: none; /* Sakrij default input za fajl */
+  }
+  
+  .upload-section label::after {
+    content: 'Izaberi sliku';
+    display: inline-block;
+    background-color: #df678c;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    margin-left: 15px;
+    cursor: pointer;
+    text-align: center;
+  }
+  
+  .upload-section input[type="file"]:checked + label::after {
+    content: 'Slika izabrana';
+  }
+  
+  button[type="submit"] {
+    background-color: #df678c;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-top: 20px;
+  }
+  
+  button[type="submit"]:hover {
+    background-color: #c5567b;
+  }
+  
+  @media(max-width:530px){
+    .dodaj-oglas-container{
+        padding: 100px 70px;
+    }
+}
 @media(max-width:500px){
     .dodaj-oglas-container{
         padding: 100px 50px;
     }
 }
-@media(max-width:430px){
+@media(max-width:450px){
     .dodaj-oglas-container{
         padding: 100px 20px;
     }
     .dodaj-oglas-container form input, .dodaj-oglas-container form textarea{
         font-size: 14px;
     }
+    .dodaj-oglas-top h2{
+        font-size: 26px;
+    }
+    .upload-section label::after {
+        display: block;
+        max-width: 50%;
+        margin-inline: auto;
+        margin-top: 10px;
+      }
 }
 @media(max-width:350px){
     .dodaj-oglas-container{
