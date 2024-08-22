@@ -37,7 +37,11 @@
 .profil-inputi input{
     width: min(400px, 90%);
     font-size: 18px;
-    padding: 5px;
+    padding: 10px;
+    outline: none;
+    margin-top: 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
 }
 .profile-additional {
     font-size: 18px;
@@ -135,16 +139,26 @@
     margin-inline: auto;
     font-size: 28px;
     color: #df678c;
-    margin-block: 20px;
+    margin-block: 25px;
 }
-.prikazi-vise a{
+.prikazi-vise a, .prikazi-manje a{
     color: #df678c !important;
 }
-#prikaz{
+#prikaz, #prikaz2{
     color: #df678c;
     margin-inline: auto;
     text-align: center;
-    margin-block: 20px;
+    margin-block: 25px;
+}
+.kupi{
+    margin-right: 10px;
+}
+.profile-surname{
+    border-bottom: 1px solid #ddd;
+    outline: none;
+}
+.profile-username{
+    color: black;
 }
 @media(max-width:1085px){
     .profile-additional-top{

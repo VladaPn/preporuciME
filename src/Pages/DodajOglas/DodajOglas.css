@@ -1,0 +1,68 @@
+.dodaj-oglas-container{
+    padding: 100px 80px;
+}
+.dodaj-oglas-container form{
+    width: min(800px,100%);
+    margin-inline: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.dodaj-oglas-container form input, .dodaj-oglas-container form textarea{
+    width: min(400px, 90%);
+    font-size: 18px;
+    padding: 10px;
+    outline: none;
+    margin-top: 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+.dodaj-oglas-container form textarea{
+    resize: none;
+}
+.dodaj-oglas-top{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.dodaj-oglas-top img{
+    width: min(400px, 80%);
+}
+.dodaj-oglas-container button{
+    background-color: #df678c;
+    border: 1px solid white;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+    color: white;
+    margin-top: 15px;
+}
+.dodaj-oglas-container  .button:hover {
+    background-color: #c94c6b;
+}
+.upload-section{
+    width: min(400px, 90%);
+    margin-top: 20px;
+    font-size: 18px;
+}
+.upload-section input{
+    width: 100% !important;
+}
+@media(max-width:500px){
+    .dodaj-oglas-container{
+        padding: 100px 50px;
+    }
+}
+@media(max-width:430px){
+    .dodaj-oglas-container{
+        padding: 100px 20px;
+    }
+    .dodaj-oglas-container form input, .dodaj-oglas-container form textarea{
+        font-size: 14px;
+    }
+}
+@media(max-width:350px){
+    .dodaj-oglas-container{
+        padding: 100px 5px;
+    }
+}

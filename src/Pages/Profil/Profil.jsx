@@ -42,7 +42,7 @@ const Profil = () => {
   const handleLogout = () => {
     auth.signOut().then(() => {
       setIsLoggedIn(false);
-      navigate('/login'); // Preusmeravanje nakon odjave
+      navigate('/login'); // Preusmeravanje na login stranicu nakon odjave
     }).catch((error) => {
       console.error("Error during logout:", error);
     });
@@ -73,59 +73,59 @@ const Profil = () => {
       <div className="profil-container">
         <div className="profil-basic-info">
           <div className="p-1">
-          <img src={profilnaSlika} alt="Profilna Slika" />
-          <div className="profil-inputi">
-            <form>
-              <input
-                type="text"
-                className="profile-name"
-                value={ime}
-                onChange={(e) => setIme(e.target.value)}
-                placeholder="Ime"
-              />
-              <input
-                type="text"
-                className="profile-surname"
-                value={prezime}
-                onChange={(e) => setPrezime(e.target.value)}
-                placeholder="Prezime"
-              />
-              <input
-                type="text"
-                className="profile-username"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="Email"
-                disabled
-              />
-              <button id="izmeni-prof" type="button">
-                <Link to="/izmeniprofil">Izmeni profil</Link>
-              </button>
-            </form>
-          </div>
+            <img src={profilnaSlika} alt="Profilna Slika" />
+            <div className="profil-inputi">
+              <form>
+                <input
+                  type="text"
+                  className="profile-name"
+                  value={ime}
+                  onChange={(e) => setIme(e.target.value)}
+                  placeholder="Ime"
+                />
+                <input
+                  type="text"
+                  className="profile-surname"
+                  value={prezime}
+                  onChange={(e) => setPrezime(e.target.value)}
+                  placeholder="Prezime"
+                />
+                <input
+                  type="text"
+                  className="profile-username"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder="Email"
+                  disabled
+                />
+                <button id="izmeni-prof" type="button">
+                  <Link to="/izmeniprofil">Izmeni profil</Link>
+                </button>
+              </form>
+            </div>
           </div>
           <div className="p-2">
-          {isLoggedIn && ProfilData.premium && (
-            <>
-              <div className="premium-img">
-                <img src={premium_icon} alt="Premium Ikona" /> Premium nalog
-              </div>
-              <div className="premium-tekst">
-                Premium nalog je aktivan još {ProfilData.trajanje} dana
-              </div>
-            </>
-          )}
-          <div className="profile-additional-bottom">
-            {isLoggedIn && (
+            {isLoggedIn && ProfilData.premium && (
               <>
-                <button onClick={handleLogout}>Logout</button>
-                <button>Izbriši profil</button>
+                <div className="premium-img">
+                  <img src={premium_icon} alt="Premium Ikona" /> Premium nalog
+                </div>
+                <div className="premium-tekst">
+                  Premium nalog je aktivan još {ProfilData.trajanje} dana
+                </div>
               </>
             )}
-          </div>
+            <div className="profile-additional-bottom">
+              {isLoggedIn && (
+                <>
+                  <button onClick={handleLogout}>Logout</button>
+                  <button>Izbriši profil</button>
+                </>
+              )}
+            </div>
           </div>
         </div>
-   
+
         <div className="profile-additional">
           <div className="profile-additional-top">
             <div className="najnovije-preporuke">
@@ -145,14 +145,19 @@ const Profil = () => {
               ) : (
                 <p>Nemate preporuke.</p>
               )}
-              {visibleRecs < ProfilData.preporuke.length ? (
-                <Link id='prikaz' className="prikazi-vise" onClick={handleShowMoreRecs}>
-                  Prikaži više
-                </Link>
-              ) : (
-                <Link id='prikaz' className="prikazi-manje" onClick={handleShowLessRecs}>
-                  Prikaži manje
-                </Link>
+              {ProfilData.preporuke.length > 3 && (
+                <>
+                  {visibleRecs < ProfilData.preporuke.length && (
+                    <Link id='prikaz' className="prikazi-vise" onClick={handleShowMoreRecs}>
+                      Prikaži više
+                    </Link>
+                  )}
+                  {visibleRecs > 3 && (
+                    <Link id='prikaz' className="prikazi-manje" onClick={handleShowLessRecs}>
+                      Prikaži manje
+                    </Link>
+                  )}
+                </>
               )}
               <p className={`preostale-preporuke ${theme ? 'dark-preostale' : ''}`}>
                 Preostalo besplatnih preporuka ovog meseca: {ProfilData.preporuke_remain}
@@ -177,19 +182,27 @@ const Profil = () => {
               ) : (
                 <p>Nemate oglase.</p>
               )}
-              {visibleAds < ProfilData.oglasi.length ? (
-                <Link id='prikaz' className="prikazi-vise" onClick={handleShowMoreAds}>
-                  Prikaži više
-                </Link>
-              ) : (
-                <Link id='prikaz2' className="prikazi-manje" onClick={handleShowLessAds}>
-                  Prikaži manje
-                </Link>
+              {ProfilData.oglasi.length > 3 && (
+                <>
+                  {visibleAds < ProfilData.oglasi.length && (
+                    <Link id='prikaz' className="prikazi-vise" onClick={handleShowMoreAds}>
+                      Prikaži više
+                    </Link>
+                  )}
+                  {visibleAds > 3 && (
+                    <Link id='prikaz2' className="prikazi-manje" onClick={handleShowLessAds}>
+                      Prikaži manje
+                    </Link>
+                  )}
+                </>
               )}
               <p className={`preostali-oglasi ${theme ? 'dark-preostale' : ''}`}>
                 Preostalo besplatnih oglasa ovog meseca: {ProfilData.oglasi_remain}
               </p>
               <button className="kupi">Kupite nove oglase</button>
+              <button className="dodaj-oglas">
+                <Link to="/dodaj-oglas">Dodaj novi oglas</Link>
+              </button>
             </div>
           </div>
         </div>
@@ -199,6 +212,8 @@ const Profil = () => {
 };
 
 export default Profil;
+
+
 
 
 

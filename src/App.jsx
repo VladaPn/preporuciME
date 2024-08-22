@@ -13,6 +13,7 @@ import OglasiDetalj from './Pages/OglasiDetalj/OglasiDetalj';
 import Login from './Pages/Login/Login';
 import Register from './Pages/Register/Register';
 import Prijava from './Components/Prijava/Prijava';
+import DodajOglas from './Pages/DodajOglas/DodajOglas';
 
 
 const App = () => {
@@ -31,6 +32,7 @@ const App = () => {
             <Route path="/login" element={<Login/>} />
             <Route path="/register" element={<Register/>} />
             <Route path="/prijava" element={<Prijava/>} />
+            <Route path="/dodaj-oglas" element={<DodajOglas/>} />
           </Routes>
           <Footer />
         </ThemeProvider>

@@ -1,36 +1,45 @@
 import React, { useContext, useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import ProfilData from '../Profil/ProfilData';
 import './OglasiDetalj.css';
 import { ThemeContext } from '../../Context/ThemeContext';
 import { Carousel } from 'react-responsive-carousel';
-import 'react-responsive-carousel/lib/styles/carousel.min.css'; // Uvoz stilova za carousel
+import 'react-responsive-carousel/lib/styles/carousel.min.css';
 
 const OglasDetalj = () => {
   const { id } = useParams();
   const oglas = ProfilData.oglasi.find((oglas) => oglas.id === parseInt(id));
   const { theme } = useContext(ThemeContext);
+  const navigate = useNavigate();
 
   const [showMessageForm, setShowMessageForm] = useState(false);
-  const [messageSent, setMessageSent] = useState(false); // Praćenje da li je poruka poslata
-  const [messageText, setMessageText] = useState(''); // Stanje za tekst poruke
+  const [messageSent, setMessageSent] = useState(false);
+  const [messageText, setMessageText] = useState('');
 
-  // Skrolovanje na vrh stranice kada se komponenta učita
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
   const handleSendMessageClick = () => {
     setShowMessageForm(!showMessageForm);
-    setMessageSent(false); // Resetuj stanje kada se otvori ili zatvori forma
+    setMessageSent(false);
   };
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
-    // Ovdje možete dodati logiku za slanje poruke
-    setMessageSent(true); // Postavi stanje na true kada se poruka pošalje
-    setMessageText(''); // Očisti tekst poruke
-    setShowMessageForm(false); // Sakrij formu nakon slanja
+    setMessageSent(true);
+    setMessageText('');
+    setShowMessageForm(false);
+  };
+
+  const handleDeleteClick = () => {
+    if (window.confirm('Da li ste sigurni da želite da obrišete ovaj oglas?')) {
+      const oglasIndex = ProfilData.oglasi.findIndex((oglas) => oglas.id === parseInt(id));
+      if (oglasIndex !== -1) {
+        ProfilData.oglasi.splice(oglasIndex, 1);
+      }
+      navigate('/profil');
+    }
   };
 
   return (
@@ -39,7 +48,7 @@ const OglasDetalj = () => {
         <div className='oglas-container'>
           <div className="oglas-detalji">
             <div className="oglas-detalj-slika">
-              <img src={oglas.img} alt="" />
+              <img src={oglas.glavnaSlika} alt="Glavna slika oglasa" />
             </div>
             <h1>{oglas.naslov}</h1>
             <p>{oglas.tekst}</p>
@@ -56,32 +65,23 @@ const OglasDetalj = () => {
                   value={messageText} 
                   onChange={(e) => setMessageText(e.target.value)} 
                 />
-                <button type="submit">Pošalji</button>
+                <button type="submit">Pošalji poruku</button>
               </form>
             )}
 
             {messageSent && <p className="success-message">Poruka je poslata!</p>}
+
+            <button onClick={handleDeleteClick} className="delete-button">
+              Obriši oglas
+            </button>
           </div>
           <div className="oglas-gallery">
             <Carousel>
-              <div>
-                <img
-                  src="https://via.placeholder.com/600x400?text=Slika+1"
-                  alt="Prva slika"
-                />
-              </div>
-              <div>
-                <img
-                  src="https://via.placeholder.com/600x400?text=Slika+2"
-                  alt="Druga slika"
-                />
-              </div>
-              <div>
-                <img
-                  src="https://via.placeholder.com/600x400?text=Slika+3"
-                  alt="Treća slika"
-                />
-              </div>
+              {oglas.galerijaSlike.map((slika, index) => (
+                <div key={index}>
+                  <img src={slika} alt={`Slika ${index + 1}`} />
+                </div>
+              ))}
             </Carousel>
           </div>
         </div>
@@ -93,6 +93,8 @@ const OglasDetalj = () => {
 };
 
 export default OglasDetalj;
+
+
 
 
 

@@ -5,7 +5,7 @@ import logo_light from '../../assets/logo_light.png';
 import theme_sun from '../../assets/theme_sun.png';
 import user from '../../assets/user.png';
 import theme_moon from '../../assets/theme_moon.png';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { ThemeContext } from '../../Context/ThemeContext';
 import { auth } from '../../firebase';
 import { signOut, onAuthStateChanged } from "firebase/auth";
@@ -14,6 +14,7 @@ const Navbar = () => {
   const { theme, setTheme } = useContext(ThemeContext);
   const [menuOpen, setMenuOpen] = useState(false);
   const [userLoggedIn, setUserLoggedIn] = useState(false);
+  const navigate = useNavigate();
 
   // Function to close the menu
   const handleCloseMenu = () => {
@@ -37,6 +38,7 @@ const Navbar = () => {
   const handleLogout = () => {
     signOut(auth).then(() => {
       setUserLoggedIn(false);
+      navigate('/login'); // Preusmeravanje na login stranicu nakon odjave
     }).catch((error) => {
       console.error("Error logging out: ", error);
     });
@@ -89,7 +91,7 @@ const Navbar = () => {
           <li><Link to='/premium' onClick={handleCloseMenu}>Premium</Link></li>
           <a href="" className="korisnik"><img src={user} alt="User" /></a>
           {userLoggedIn ? (
-            <button onClick={handleLogout}><Link to='/' onClick={handleCloseMenu}>Logout</Link></button>
+            <button onClick={handleLogout}><Link to='/login' onClick={handleCloseMenu}>Logout</Link></button>
           ) : (
             <button onClick={handleCloseMenu}><Link to='/login' onClick={handleCloseMenu}>Login</Link></button>
           )}
@@ -100,4 +102,5 @@ const Navbar = () => {
 }
 
 export default Navbar;
+
 

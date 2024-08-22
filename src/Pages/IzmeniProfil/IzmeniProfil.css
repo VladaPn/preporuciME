@@ -30,6 +30,7 @@
 .upload-slike input{
     width: min(200px, 90%);
     font-size: 18px;
+    padding: 10px;
 }
 .buttons-container{
     display: flex;
@@ -50,6 +51,14 @@
 
 .izmeni-profil-form input{
     margin-top: 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+.profile-username{
+    margin-top: 0px;
+}
+.prezime{
+    border-bottom: 2px solid black;
 }
 .upload-slike{
     margin-top: 15px;
