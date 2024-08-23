@@ -91,6 +91,68 @@
   button[type="submit"]:hover {
     background-color: #c5567b;
   }
+  .dodaj-oglas-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    padding: 100px 80px;
+    margin: 0 auto;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .dodaj-oglas-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+  
+  .dodaj-oglas-top img {
+    width: min(400px, 90%);
+  }
+  
+  .upload-section {
+    margin-bottom: 15px;
+  }
+  
+  .saveti-za-oglas {
+    background-color: transparent;
+    padding: 20px;
+  }
+  
+  .saveti-za-oglas h3 {
+    margin-bottom: 15px;
+    font-size: 1.5em;
+  }
+  
+  .saveti-za-oglas ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .saveti-za-oglas ul li {
+    margin-bottom: 10px;
+    font-size: 1.1em;
+    line-height: 1.5;
+  }
+  
+  .saveti-za-oglas ul li::before {
+    content: "✔️";
+    margin-right: 10px;
+    color: #df678c;
+  }
+  
+  .theme-dark .dodaj-oglas-container {
+    color: white;
+  }
+  @media(max-width:1000px){
+    .dodaj-oglas-container {
+        grid-template-columns: 1fr;
+        gap: 30px;
+        padding: 100px 80px;
+      }
+  }
+
   
   @media(max-width:530px){
     .dodaj-oglas-container{

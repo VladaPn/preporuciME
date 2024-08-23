@@ -57,14 +57,23 @@
   .toggle-password-visibility {
     position: absolute;
     top: 50%;
-    right: 30px;
-    background: white;
+    right: 10px;
+    background: transparent;
     width: 50px;
     border: none;
     cursor: pointer;
     font-size: 1.2rem;
     color: #df678c; /* Roze boja */
   }
+  .login-container input[type="password"]::-ms-reveal,
+.login-container input[type="password"]::-ms-clear {
+  display: none;
+}
+
+/* Stilizacija za webkit pretraživače (Chrome, Safari, itd.) */
+.login-container input[type="password"]::-webkit-textfield-decoration-container {
+  display: none;
+}
   
   .toggle-password-visibility:focus {
     outline: none;

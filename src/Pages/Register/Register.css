@@ -90,6 +90,16 @@
   .register-container .button:hover {
     background-color: #c94c6b;
   }
+  .register-container input[type="password"]::-ms-reveal,
+.register-container input[type="password"]::-ms-clear {
+  display: none;
+}
+
+/* Stilizacija za webkit pretraživače (Chrome, Safari, itd.) */
+.register-container input[type="password"]::-webkit-textfield-decoration-container {
+  display: none;
+}
+  
   
   @media (max-width: 768px) {
     h1 {

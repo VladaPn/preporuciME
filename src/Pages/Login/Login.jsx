@@ -6,12 +6,12 @@ import { signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup, onAuth
 import { auth } from '../../firebase';
 import { Link, useNavigate } from 'react-router-dom';
 import google from '../../assets/google.png';
-import { FaEye, FaEyeSlash } from 'react-icons/fa'; // Dodajte ove linije za ikone oka
+import { FaEye, FaEyeSlash } from 'react-icons/fa';
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [showPassword, setShowPassword] = useState(false); // Dodano stanje za prikaz lozinke
+  const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState('');
   const [showResetPassword, setShowResetPassword] = useState(false);
   const { theme } = useContext(ThemeContext);
@@ -65,7 +65,7 @@ const Login = () => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
         navigate('/profil');
-      } 
+      }
     });
 
     return () => unsubscribe();
@@ -90,19 +90,21 @@ const Login = () => {
           <div className="input-group password-group">
             <label htmlFor="password">Lozinka:</label>
             <input
-              type={showPassword ? 'text' : 'password'} // Menjajte tip inputa na osnovu stanja
+              type={showPassword ? 'text' : 'password'}
               id="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
             />
-            <button
-              type="button"
-              className="toggle-password-visibility"
-              onClick={() => setShowPassword(!showPassword)}
-            >
-              {showPassword ? <FaEyeSlash /> : <FaEye />} {/* Ikone za prikazivanje i skrivanje lozinke */}
-            </button>
+            {password && (
+              <button
+                type="button"
+                className="toggle-password-visibility"
+                onClick={() => setShowPassword(!showPassword)}
+              >
+                {showPassword ? <FaEyeSlash /> : <FaEye />}
+              </button>
+            )}
           </div>
           <button type="submit" className="button">Prijavi se</button>
         </form>
@@ -130,6 +132,7 @@ const Login = () => {
 };
 
 export default Login;
+
 
 
 

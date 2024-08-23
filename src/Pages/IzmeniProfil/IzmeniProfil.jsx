@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import { auth } from '../../firebase';
 import lock_img from '../../assets/lock.png';
 import Prijava from '../../Components/Prijava/Prijava';
+import { EmailAuthProvider, reauthenticateWithCredential } from "firebase/auth";
 
 const IzmeniProfil = () => {
   const { theme } = useContext(ThemeContext);
@@ -76,22 +77,37 @@ const IzmeniProfil = () => {
       return;
     }
 
-    localStorage.setItem('ime', ime);
-    localStorage.setItem('prezime', prezime);
-    localStorage.setItem('email', email);
-
     if (novaLozinka) {
-      if (staraLozinka === localStorage.getItem('lozinka')) {
-        localStorage.setItem('lozinka', novaLozinka);
-      } else {
-        setPoruka('Stara lozinka nije tačna!');
-        setPorukaTip('greska');
-        return;
-      }
-    }
+      const user = auth.currentUser;
+      const credential = EmailAuthProvider.credential(user.email, staraLozinka);
 
-    setPoruka('Izmene su sačuvane.');
-    setPorukaTip('uspesno');
+      reauthenticateWithCredential(user, credential)
+        .then(() => {
+          // Stara lozinka je tačna, sada ažuriraj lozinku
+          user.updatePassword(novaLozinka).then(() => {
+            localStorage.setItem('lozinka', novaLozinka);
+            setPoruka('Izmene su sačuvane.');
+            setPorukaTip('uspesno');
+          }).catch((error) => {
+            console.error('Greška pri ažuriranju lozinke:', error);
+            setPoruka('Došlo je do greške pri ažuriranju lozinke.');
+            setPorukaTip('greska');
+          });
+        })
+        .catch((error) => {
+          console.error('Stara lozinka nije tačna:', error);
+          setPoruka('Stara lozinka nije tačna!');
+          setPorukaTip('greska');
+        });
+    } else {
+      // Ažuriranje ostalih podataka bez promene lozinke
+      localStorage.setItem('ime', ime);
+      localStorage.setItem('prezime', prezime);
+      localStorage.setItem('email', email);
+
+      setPoruka('Izmene su sačuvane.');
+      setPorukaTip('uspesno');
+    }
   };
 
   const handleDeleteAccount = () => {
@@ -211,6 +227,7 @@ const IzmeniProfil = () => {
 };
 
 export default IzmeniProfil;
+
 
 
 
