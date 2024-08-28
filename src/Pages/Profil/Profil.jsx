@@ -19,6 +19,7 @@ const Profil = () => {
 
   const [visibleRecs, setVisibleRecs] = useState(3);
   const [visibleAds, setVisibleAds] = useState(3);
+  const [oglasi, setOglasi] = useState([]);
 
   useEffect(() => {
     const user = auth.currentUser;
@@ -39,6 +40,13 @@ const Profil = () => {
     }
   }, [isLoggedIn]);
 
+  useEffect(() => {
+    // Učitavanje oglasa iz localStorage
+    const savedOglasi = JSON.parse(localStorage.getItem('oglasi')) || [];
+    // Kombinovanje oglasa iz ProfilData i sačuvanih oglasa
+    setOglasi([...ProfilData.oglasi, ...savedOglasi]);
+  }, []);
+
   const handleLogout = () => {
     auth.signOut().then(() => {
       setIsLoggedIn(false);
@@ -46,6 +54,19 @@ const Profil = () => {
     }).catch((error) => {
       console.error("Error during logout:", error);
     });
+  };
+
+  const handleAddOglas = () => {
+    const newOglas = {
+      id: Date.now(), // Jedinstveni ID, može biti bilo šta drugo
+      naslov: 'Naslov novog oglasa',
+      tekst: 'Tekst novog oglasa',
+      // Dodajte druge potrebne informacije
+    };
+
+    const updatedOglasi = [...oglasi, newOglas];
+    localStorage.setItem('oglasi', JSON.stringify(updatedOglasi));
+    setOglasi(updatedOglasi);
   };
 
   const handleShowMoreRecs = () => {
@@ -168,9 +189,9 @@ const Profil = () => {
             <div className="najnoviji-oglasi">
               <div className={`box-rounded ${theme ? 'box-dark' : ''}`}></div>
               <h2>Oglasi</h2>
-              {ProfilData.oglasi.length > 0 ? (
+              {oglasi.length > 0 ? (
                 <ul>
-                  {ProfilData.oglasi.slice(0, visibleAds).map((oglas) => (
+                  {oglasi.slice(0, visibleAds).map((oglas) => (
                     <li key={oglas.id}>
                       <Link to={`/oglasi/${oglas.id}`}>
                         <h3>{oglas.naslov}</h3>
@@ -182,9 +203,9 @@ const Profil = () => {
               ) : (
                 <p>Nemate oglase.</p>
               )}
-              {ProfilData.oglasi.length > 3 && (
+              {oglasi.length > 3 && (
                 <>
-                  {visibleAds < ProfilData.oglasi.length && (
+                  {visibleAds < oglasi.length && (
                     <Link id='prikaz' className="prikazi-vise" onClick={handleShowMoreAds}>
                       Prikaži više
                     </Link>

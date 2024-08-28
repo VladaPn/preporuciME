@@ -56,6 +56,13 @@
 .success-message{
     margin-top: 20px;
 }
+.delete-button{
+    margin-left: 20px;
+    font-weight: 700;
+    font-size: 20px;
+    display: inline;
+    text-align: center;
+}
 @media (max-width: 950px) {
     .oglas-container {
         grid-template-columns: 1fr;
@@ -158,6 +165,10 @@
     }
     .oglas-gallery img {
         max-width: 220px;
+    }
+    .delete-button{
+        font-weight: 600;
+        font-size: 18px;
     }
 }
 

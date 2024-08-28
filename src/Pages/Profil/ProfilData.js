@@ -1,5 +1,6 @@
 import profile_pic from '../../assets/profile_pic.png';
 import oglas_detalj_img from '../../assets/oglas_detalj_img.jpg';
+import carouselPic from '../../assets/instaa.jpg'
 
 const ProfilData = {
     ime: '',
@@ -17,9 +18,9 @@ const ProfilData = {
     ],
     preporuke_remain: 2,
     oglasi: [
-        { id: 1, naslov: 'Prodajem bicikl', tekst: 'Polovan bicikl u odličnom stanju, cena po dogovoru. Bicikl je redovno održavan i u savršenom je funkcionalnom stanju. Ima sve potrebne dodatke, uključujući svetla, zvono i nosioca za torbu. Idealno za svakodnevne vožnje i rekreaciju.', img:oglas_detalj_img },
-        { id: 2, naslov: 'Iznajmljivanje stana', tekst: 'Jednosoban stan u centru grada, potpuno namešten. Stan se nalazi u mirnom delu grada, u neposrednoj blizini svih važnih sadržaja kao što su prodavnice, restorani i prevoz. Uključuje moderne aparate, klimatizaciju i pristup internetu.', img:oglas_detalj_img },
-        { id: 3, naslov: 'Prodaja polovnih knjiga', tekst: 'Knjige različitih žanrova u odličnom stanju. Imamo roman, beletristiku, knjige o samopomoći i mnoge druge naslove. Sve knjige su pažljivo očuvane i spremne za nove čitatelje. Idealno za ljubitelje knjiga koji žele proširiti svoju biblioteku.', img:oglas_detalj_img },
+        { id: 1, naslov: 'Prodajem bicikl', tekst: 'Polovan bicikl u odličnom stanju, cena po dogovoru. Bicikl je redovno održavan i u savršenom je funkcionalnom stanju. Ima sve potrebne dodatke, uključujući svetla, zvono i nosioca za torbu. Idealno za svakodnevne vožnje i rekreaciju.', glavnaSlika:oglas_detalj_img, galerijaSlike:[carouselPic,carouselPic,carouselPic] },
+        { id: 2, naslov: 'Iznajmljivanje stana', tekst: 'Jednosoban stan u centru grada, potpuno namešten. Stan se nalazi u mirnom delu grada, u neposrednoj blizini svih važnih sadržaja kao što su prodavnice, restorani i prevoz. Uključuje moderne aparate, klimatizaciju i pristup internetu.', glavnaSlika:oglas_detalj_img, galerijaSlike:[carouselPic,carouselPic,carouselPic] },
+        { id: 3, naslov: 'Prodaja polovnih knjiga', tekst: 'Knjige različitih žanrova u odličnom stanju. Imamo roman, beletristiku, knjige o samopomoći i mnoge druge naslove. Sve knjige su pažljivo očuvane i spremne za nove čitatelje. Idealno za ljubitelje knjiga koji žele proširiti svoju biblioteku.', glavnaSlika:oglas_detalj_img, galerijaSlike:[carouselPic,carouselPic,carouselPic] },
     ],
     oglasi_remain: 4,
     lozinka: 'ad2kfs'

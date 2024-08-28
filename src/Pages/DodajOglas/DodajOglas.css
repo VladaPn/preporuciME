@@ -1,34 +1,34 @@
-.dodaj-oglas-container{
+.dodaj-oglas{
     padding: 100px 80px;
 }
-.dodaj-oglas-container form{
+.dodaj-oglas form{
     width: min(900px,100%);
     margin-inline: auto;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
-.dodaj-oglas-container form input, .dodaj-oglas-container form textarea{
+.dodaj-oglas form input, .dodaj-oglas form textarea{
     width: min(600px, 90%);
     font-size: 18px;
     padding: 10px;
     outline: none;
+    margin-bottom: 20px;
     margin-top: 12px;
     border: 1px solid #ddd;
     border-radius: 4px;
 }
-.dodaj-oglas-container form textarea{
+.dodaj-oglas form textarea{
     resize: none;
 }
-.dodaj-oglas-top{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-.dodaj-oglas-top img{
+
+.dodaj-oglas img{
     width: min(400px, 80%);
+    display: block;
+    margin-inline: auto;
+    margin-bottom: 30px;
 }
-.dodaj-oglas-container button{
+.dodaj-oglas button{
     background-color: #df678c;
     border: 1px solid white;
     padding: 10px 20px;
@@ -37,7 +37,7 @@
     color: white;
     margin-top: 15px;
 }
-.dodaj-oglas-container  .button:hover {
+.dodaj-oglas  .button:hover {
     background-color: #c94c6b;
 }
 .upload-section{
@@ -48,14 +48,26 @@
 .upload-section input{
     width: 100% !important;
 }
+.dodaj-oglas form div{
+  text-align: center;
+  width: min(600px, 90%) !important;
+}
+.dodaj-oglas form div label{
+ display: block;
+ text-align: left;
+}
+.dodaj-oglas form div input,.dodaj-oglas form div textarea{
+  width: 100%;
+}
 .dodaj-oglas-top h2{
     font-size: 30px;
 }
 
-  .upload-section label {
-    display: block;
-    margin-bottom: 8px;
-  }
+.oglas-form h2{
+  font-size: 40px;
+  text-align: center;
+  margin-bottom: 30px;
+}
   
   .upload-section input[type="file"] {
     display: none; /* Sakrij default input za fajl */
@@ -68,16 +80,16 @@
     color: white;
     padding: 10px 20px;
     border-radius: 5px;
-    margin-left: 15px;
     cursor: pointer;
     text-align: center;
+    margin-block: 20px;
   }
   
   .upload-section input[type="file"]:checked + label::after {
     content: 'Slika izabrana';
   }
   
-  button[type="submit"] {
+  .dodaj-oglas button[type="submit"] {
     background-color: #df678c;
     color: white;
     border: none;
@@ -91,13 +103,11 @@
   button[type="submit"]:hover {
     background-color: #c5567b;
   }
-  .dodaj-oglas-container {
+  .oglas-container {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 20px;
     padding: 100px 80px;
-    margin: 0 auto;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   }
   
   .dodaj-oglas-top {
@@ -120,7 +130,7 @@
     padding: 20px;
   }
   
-  .saveti-za-oglas h3 {
+  .oglas-tips h3 {
     margin-bottom: 15px;
     font-size: 1.5em;
   }
@@ -130,13 +140,13 @@
     padding: 0;
   }
   
-  .saveti-za-oglas ul li {
+  .oglas-tips ul li {
     margin-bottom: 10px;
     font-size: 1.1em;
     line-height: 1.5;
   }
   
-  .saveti-za-oglas ul li::before {
+  .oglas-tips ul li::before {
     content: "✔️";
     margin-right: 10px;
     color: #df678c;
@@ -145,6 +155,13 @@
   .theme-dark .dodaj-oglas-container {
     color: white;
   }
+  .oglas-tips ul{
+    list-style-type: none;
+  }
+  .oglas-container-2{
+    align-items: first baseline;
+  }
+  
   @media(max-width:1000px){
     .dodaj-oglas-container {
         grid-template-columns: 1fr;
