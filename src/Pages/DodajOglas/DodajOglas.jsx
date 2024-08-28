@@ -84,6 +84,7 @@ const DodajOglas = () => {
                 value={tekst}
                 onChange={(e) => setTekst(e.target.value)}
                 required
+                rows={7}
               />
             </div>
             <div>

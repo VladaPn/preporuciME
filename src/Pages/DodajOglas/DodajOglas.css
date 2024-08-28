@@ -103,7 +103,7 @@
   button[type="submit"]:hover {
     background-color: #c5567b;
   }
-  .oglas-container {
+  .oglas-container-2 {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 20px;
@@ -163,32 +163,35 @@
   }
   
   @media(max-width:1000px){
-    .dodaj-oglas-container {
+    .oglas-container-2 {
         grid-template-columns: 1fr;
         gap: 30px;
         padding: 100px 80px;
+      }
+      .dodaj-oglas{
+        padding: 0;
       }
   }
 
   
   @media(max-width:530px){
-    .dodaj-oglas-container{
+    .glas-container{
         padding: 100px 70px;
     }
 }
 @media(max-width:500px){
-    .dodaj-oglas-container{
+    .oglas-container{
         padding: 100px 50px;
     }
 }
 @media(max-width:450px){
-    .dodaj-oglas-container{
+    .oglas-container{
         padding: 100px 20px;
     }
-    .dodaj-oglas-container form input, .dodaj-oglas-container form textarea{
+    .oglas-container form input, .oglas-container form textarea{
         font-size: 14px;
     }
-    .dodaj-oglas-top h2{
+    .oglas-container-2 h2{
         font-size: 26px;
     }
     .upload-section label::after {
@@ -199,7 +202,7 @@
       }
 }
 @media(max-width:350px){
-    .dodaj-oglas-container{
+    .oglas-container{
         padding: 100px 5px;
     }
 }
