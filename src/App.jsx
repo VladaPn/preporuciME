@@ -14,6 +14,7 @@ import Login from './Pages/Login/Login';
 import Register from './Pages/Register/Register';
 import Prijava from './Components/Prijava/Prijava';
 import DodajOglas from './Pages/DodajOglas/DodajOglas';
+import Premium from './Pages/Premium/Premium';
 
 
 const App = () => {
@@ -33,6 +34,7 @@ const App = () => {
             <Route path="/register" element={<Register/>} />
             <Route path="/prijava" element={<Prijava/>} />
             <Route path="/dodaj-oglas" element={<DodajOglas/>} />
+            <Route path="/premium" element={<Premium/>} />
           </Routes>
           <Footer />
         </ThemeProvider>
