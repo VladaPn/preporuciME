@@ -63,24 +63,24 @@ const DodajOglas = () => {
 
   const tips = [
     {
-      emoji: '🔍',
-      tekst: "Navigacija je ključno za korisničko iskustvo. Kada korisnici lako mogu pronaći ono što traže, smanjuje se frustracija i povećava zadovoljstvo. Preporučuje se upotreba jasno označenih kategorija i jednostavnih menija kako bi korisnici mogli brzo da se orijentišu i pristupe željenim sadržajima."
+      emoji: '📢',
+      tekst: 'Upečatljiv naslov privlači pažnju. Naslov je prva stvar koju potencijalni kupci vide, zato treba biti kratak, jasan i informativan. Izbegavajte preduge naslove i fokusirajte se na ključne reči koje opisuju vaš proizvod ili uslugu. Na primer, umesto generičkog naslova "Prodajem telefon", napišite "Prodajem iPhone 12 u odličnom stanju, povoljno!"'
     },
     {
-      emoji: '📱',
-      tekst: "Responzivni dizajn osigurava da vaš sajt ili aplikacija izgleda dobro i funkcioniše pravilno na svim uređajima. Ovo je važno jer sve više korisnika pristupa internetu putem mobilnih uređaja, pa je bitno da imaju optimalno iskustvo bez obzira na veličinu ekrana."
+      emoji: '📝',
+      tekst: "Kada pišete opis, trudite se da uključite sve relevantne informacije o proizvodu ili usluzi. Objasnite specifične karakteristike, stanje, prednosti, i potencijalne koristi za kupca. Takođe, budite iskreni i transparentni - navedite ako postoje neki nedostaci. Detalji poput dimenzija, materijala, ili rokova isporuke mogu napraviti veliku razliku."
     },
     {
-      emoji: '🔧',
-      tekst: "Konzistentnost u dizajnu znači da svaki deo vašeg sajta ili aplikacije treba da prati iste vizuelne i funkcionalne principe. Ovo uključuje upotrebu istih boja, fontova, dugmadi i navigacionih elemenata na svim stranama sajta."
+      emoji: '📷',
+      tekst: "Priložite jasne, visoko kvalitetne fotografije koje prikazuju vaš proizvod iz više uglova. Izbegavajte korišćenje nejasnih ili mutnih slika, jer to može odbiti potencijalne kupce. Ako prodajete uslugu, slike mogu biti ilustrativne ili pokazivati rezultate vašeg rada. Ne zaboravite da koristite dobar osvetljenje i neutralnu pozadinu."
     },
     {
-      emoji: '🎯',
-      tekst: "Razumevanje ko su vaši korisnici i šta žele postići je ključno za uspeh sajta ili aplikacije. Definišite svoju ciljnu publiku i fokusirajte se na njihove potrebe, interese i probleme."
+      emoji: '💸',
+      tekst: 'Navedite cenu jasno i direktno, bez skrivanja dodatnih troškova. Ako nudite popuste ili specijalne ponude, to bi trebalo da bude istaknuto u opisu. Ukoliko postoji mogućnost pregovora, možete dodati napomenu "Cena po dogovoru," ali budite spremni na eventualne pregovore.'
     },
     {
-      emoji: '⚡',
-      tekst: "Brzina učitavanja stranica ima veliki uticaj na korisničko iskustvo. Spore stranice mogu odbiti korisnike i negativno uticati na rangiranje vašeg sajta u pretraživačima. Optimizujte slike, smanjite nepotrebne skripte i iskoristite keširanje kako bi stranice bile što brže."
+      emoji: '🚀',
+      tekst: 'Na kraju oglasa, uključite jasan poziv na akciju koji će ohrabriti potencijalne kupce da vas kontaktiraju ili posete vašu prodavnicu. Na primer, možete napisati "Kontaktirajte nas odmah za više informacija!" ili "Posetite naš sajt i naručite danas - količine su ograničene!" Ovaj korak može biti ključan u pretvaranju zainteresovanih u stvarne kupce.'
     }
   ];
 
@@ -156,7 +156,7 @@ const DodajOglas = () => {
             {tips.map((tip, index) => (
               <button
                 key={index}
-                className={`tab ${activeTab === index ? 'active' : ''}`}
+                className={`tab ${activeTab === index ? 'active-tab' : ''} ${activeTab === index && theme ? 'tab-color-active':''} ${theme?'tab-color ':''}`}
                 onClick={() => setActiveTab(index)}
               >
                 {tip.emoji}

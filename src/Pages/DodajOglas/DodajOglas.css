@@ -96,6 +96,7 @@
     padding: 10px 20px;
     border-radius: 5px;
     cursor: pointer;
+    font-size: 20px;
     transition: background-color 0.3s;
     margin-top: 20px;
   }
@@ -164,28 +165,32 @@
   
   .tabs {
     display: flex;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
   }
   
   .tab{
     font-size: 20px;
     cursor: pointer;
-    background-color: white;
+    background-color: purple;
     padding: 10px 20px;
     border: none;
     border-bottom: 2px solid transparent;
     outline: none;
     box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
   }
-  
+   .tab-color{
+    background-color: white;
+   }
   .active-tab {
-    border-bottom: 2px solid #df678c;
-    color: #df678c;
+    border-bottom: 2px solid white;
   }
-  
+  .tab-color-active{
+    border-bottom: 2px solid purple;
+  }
   .tab-content {
     margin-top: 10px;
     font-size: 22px;
+    line-height: 24px;
     padding: 10px;
   }
   
@@ -194,6 +199,7 @@
         grid-template-columns: 1fr;
         gap: 30px;
         padding: 100px 80px;
+        padding-bottom: 0;
       }
       .dodaj-oglas{
         padding: 0;
@@ -203,18 +209,24 @@
       }
   }
   @media(max-width:530px){
-    .glas-container{
+    .oglas-container{
         padding: 100px 70px;
+        padding-bottom: 60px;
     }
 }
 @media(max-width:500px){
     .oglas-container{
         padding: 100px 50px;
     }
+    .tab-content{
+      font-size: 20px;
+      line-height: 22px;
+    }
 }
 @media(max-width:450px){
     .oglas-container{
         padding: 100px 20px;
+        padding-bottom: 30px;
     }
     .oglas-container form input, .oglas-container form textarea{
         font-size: 14px;
@@ -229,8 +241,34 @@
         margin-top: 10px;
       }
 }
+@media(max-width:400px){
+  .tab {
+    font-size: 16px;
+    padding: 8px 15px;
+}
+.tab-color{
+  background-color: white;
+ }
+.active-tab {
+  border-bottom: 2px solid white;
+}
+.tab-color-active{
+  border-bottom: 2px solid purple;
+}
+.tab-content{
+  font-size: 18px;
+  line-height: 20px;
+  padding: 30px;
+}
+}
 @media(max-width:350px){
     .oglas-container{
         padding: 100px 5px;
     }
+}
+@media(max-width:320px){
+  .tab {
+    font-size: 16px;
+    padding: 7px 13px;
+}
 }
