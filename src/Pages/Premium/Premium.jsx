@@ -2,10 +2,14 @@ import React, { useContext, useEffect, useRef } from 'react';
 import './Premium.css';
 import { ThemeContext } from '../../Context/ThemeContext';
 import premium from '../../assets/premium/premium.png';
+import userImage1 from '../../assets/users/user1.jpg'; // Add appropriate image paths
+import userImage2 from '../../assets/users/user2.jpg';
+import userImage3 from '../../assets/users/user3.jpg';
 
 const Premium = () => {
     const { theme } = useContext(ThemeContext);
     const ponudeRef = useRef([]);
+    const testimonialsRef = useRef([]);
 
     useEffect(() => {
         const observer = new IntersectionObserver(
@@ -18,7 +22,7 @@ const Premium = () => {
                     }
                 });
             },
-            { threshold: 0.1 } // 10% elementa mora biti vidljivo pre nego što se animacija pokrene
+            { threshold: 0.1 } // 10% of the element must be visible before the animation triggers
         );
 
         // Observing each "ponuda" div
@@ -108,10 +112,42 @@ const Premium = () => {
                     </div>
                 </div>
             </div>
+            <div className="testimonials-section">
+                <h3>Šta korisnici kažu o Premium nalogu:</h3>
+                <div className="testimonials-grid">
+                    <div
+                        className={`testimonial ${theme ? 'testimonial-dark' : ''}`}
+                        ref={(el) => (testimonialsRef.current[0] = el)}
+                    >
+                        <div className="testimonial-img">
+
+                        </div>
+                        <p>"Premium članstvo mi je donelo mnogo više klijenata! Preporučujem svima."</p>
+                        <span>- Ivan Petrović</span>
+                    </div>
+                    <div
+                        className={`testimonial ${theme ? 'testimonial-dark' : ''}`}
+                        ref={(el) => (testimonialsRef.current[1] = el)}
+                    >
+                        <div className="testimonial-img t-2"></div>
+                        <p>"Sjajna investicija! Povećala sam broj preporuka za 50%."</p>
+                        <span>- Ana Jovanović</span>
+                    </div>
+                    <div
+                        className={`testimonial ${theme ? 'testimonial-dark' : ''}`}
+                        ref={(el) => (testimonialsRef.current[2] = el)}
+                    >
+                        <div className="testimonial-img t-3"></div>
+                        <p>"Najbolji način da se izdvojite u moru ponuda."</p>
+                        <span>- Marko Marković</span>
+                    </div>
+                </div>
+            </div>
         </div>
     );
 };
 
 export default Premium;
+
 
 

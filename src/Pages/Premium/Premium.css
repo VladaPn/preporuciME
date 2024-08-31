@@ -80,6 +80,55 @@
     color: white;
     margin-top: 50px;
 }
+.testimonials-grid{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 80px;
+}
+.testimonials-section{
+    margin-top: 100px;
+}
+.testimonial-img{
+    background: url('../../assets/users/user1.jpg');
+    width: 100px;
+    height: 100px;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-radius: 50%;
+    margin-bottom: 30px;
+}
+.t-2{
+    background: url('../../assets/users/user2.jpg');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.t-3{
+    background: url('../../assets/users/user3.jpg');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.testimonials-section h3{
+    font-size: 42px;
+    margin-block: 30px;
+}
+.testimonials-grid img{
+    max-width: 100px;
+}
+.testimonials-section h3{
+    font-size: 42px;
+    margin:30px;
+}
+@media(max-width:912px) {
+    .testimonials-grid {
+        grid-template-columns: 1fr;
+        font-size: 24px;
+        line-height: 30px;
+    }
+}
+
 @media(max-width:1530px){
     .ponuda h2{
         font-size: 46px;

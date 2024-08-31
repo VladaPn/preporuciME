@@ -50,6 +50,7 @@ const PreporukaDetalj = () => {
         <div className="preporuka-left">
           <h1>{preporuka.title}</h1>
           <img src={preporuka.image} alt={preporuka.title} />
+          
         </div>
         <div className="preporuka-right">
           <p><strong>Autor:</strong> {preporuka.author}</p>
